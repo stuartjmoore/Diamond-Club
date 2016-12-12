@@ -39,6 +39,8 @@ class ViewController: UIViewController {
     private var offRightContraint: NSLayoutConstraint?
     private var offLeftContraint: NSLayoutConstraint?
 
+    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "chat", nick: "AppleTV\(arc4random_uniform(10_000))")
+
     private var channels: [Channel]?
     private var currentChannelIndex: Int?
 
@@ -56,6 +58,9 @@ class ViewController: UIViewController {
         rightTapGesture.addTarget(self, action: #selector(handleRightTapGesture(_:)))
         rightTapGesture.allowedPressTypes = [NSNumber(value: UIPressType.rightArrow.rawValue as Int)]
         rightTapGesture.delegate = self
+
+        chatRealm.delegate = self
+        chatRealm.start()
 
         DiamondClub.getLiveChannels() { (channels) in
             self.channels = channels
@@ -220,6 +225,26 @@ class ViewController: UIViewController {
     deinit {
         playerItem?.removeObserver(self, forKeyPath: "status", context: &AVPlayerItemStatusObservationContext)
         playerViewController?.player = nil
+    }
+
+}
+
+extension ViewController: IRCClientDelegate {
+
+    func IRC(_ client: IRCClient, didReceiveCommand command: IRCClient.Command, withMessage message: String?, andArguments: [String], fromSource: String?) {
+        print("\(command)\t| \(message ?? "")")
+    }
+
+    func IRC(_ client: IRCClient, didReceiveMessage message: String, fromUsername username: String) {
+        print("\(username)\t| \(message)")
+    }
+
+    func IRC(_ client: IRCClient, didReceiveError error: Error) {
+        return
+    }
+
+    func IRCStreamDidEnd(_ client: IRCClient) {
+        return
     }
 
 }

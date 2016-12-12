@@ -59,8 +59,8 @@ class ViewController: UIViewController {
         rightTapGesture.allowedPressTypes = [NSNumber(value: UIPressType.rightArrow.rawValue as Int)]
         rightTapGesture.delegate = self
 
-        chatRealm.delegate = self
-        chatRealm.start()
+//        chatRealm.delegate = self
+//        chatRealm.start()
 
         DiamondClub.getLiveChannels() { (channels) in
             self.channels = channels
@@ -199,8 +199,6 @@ class ViewController: UIViewController {
             self.rightConstraint = rightConstraint
             self.offRightContraint = offRightContraint
             self.offLeftContraint = offLeftContraint
-
-//            player.play()
         }
         
         slideInAnimator.startAnimation()

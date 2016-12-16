@@ -13,4 +13,14 @@ class ChannelCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var iconImageView: UIImageView!
 
+    override func awakeFromNib() {
+        titleLabel.alpha = 0
+    }
+
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        coordinator.addCoordinatedAnimations({ 
+            self.titleLabel.alpha = self.isFocused ? 1 : 0
+        }, completion: nil)
+    }
+
 }

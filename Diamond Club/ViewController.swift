@@ -14,10 +14,6 @@ private var UITableViewContentSizeObservationContext = 1
 
 class ViewController: UIViewController {
 
-    enum Direction {
-        case left, right
-    }
-
     fileprivate var playerItem: AVPlayerItem? {
         willSet {
             playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayer.status), context: &AVPlayerItemStatusObservationContext)
@@ -29,15 +25,18 @@ class ViewController: UIViewController {
     fileprivate let player = AVPlayer()
     fileprivate let playerViewController = AVPlayerViewController()
 
-    private var topConstraint: NSLayoutConstraint?
-    private var botomConstraint: NSLayoutConstraint?
-    private var leftConstraint: NSLayoutConstraint?
-    private var rightConstraint: NSLayoutConstraint?
+    @IBOutlet private var showChannelsContraint: NSLayoutConstraint!
+    @IBOutlet private var hideChannelsContraint: NSLayoutConstraint!
+    @IBOutlet fileprivate var channelCollectionView: UICollectionView!
 
-    fileprivate let panGesture = UIPanGestureRecognizer()
-
-    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "test", nick: "AppleTV\(arc4random_uniform(10_000))")
+    @IBOutlet private var showChatContraint: NSLayoutConstraint!
+    @IBOutlet private var hideChatContraint: NSLayoutConstraint!
     @IBOutlet fileprivate var chatTableView: UITableView!
+
+    fileprivate let topTapGesture = UITapGestureRecognizer()
+    fileprivate let bottomTapGesture = UITapGestureRecognizer()
+
+    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "chat", nick: "AppleTV\(arc4random_uniform(10_000))")
     fileprivate var chatData: [(username: String, message: String)] = []
 
     fileprivate var channels: [Channel]? {
@@ -48,10 +47,10 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBOutlet fileprivate var channelCollectionView: UICollectionView!
+    // MARK: -
 
     override var preferredFocusedView: UIView? {
-        return channelCollectionView
+        return playerViewController.view
     }
 
     // MARK: -
@@ -60,10 +59,10 @@ class ViewController: UIViewController {
         chatTableView?.addObserver(self, forKeyPath: #keyPath(UITableView.contentSize), options: [.initial], context: &UITableViewContentSizeObservationContext)
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 66
-/*
+
         chatRealm.delegate = self
         chatRealm.start()
-*/
+
         playerViewController.player = player
         playerViewController.view.frame = view.bounds
 
@@ -76,11 +75,17 @@ class ViewController: UIViewController {
         playerViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         playerViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         playerViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-/*
-        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
-        panGesture.delegate = self
-        view.addGestureRecognizer(panGesture)
-*/
+
+        topTapGesture.addTarget(self, action: #selector(handleTopTapGesture(_:)))
+        topTapGesture.allowedPressTypes = [NSNumber(integerLiteral: UIPressType.upArrow.rawValue)]
+        topTapGesture.delegate = self
+        playerViewController.view.addGestureRecognizer(topTapGesture)
+
+        bottomTapGesture.addTarget(self, action: #selector(handleBottomTapGesture(_:)))
+        bottomTapGesture.allowedPressTypes = [NSNumber(integerLiteral: UIPressType.downArrow.rawValue)]
+        bottomTapGesture.delegate = self
+        playerViewController.view.addGestureRecognizer(bottomTapGesture)
+
         DiamondClub.getLiveChannels() { (channels) in
             self.channels = channels
 
@@ -91,134 +96,47 @@ class ViewController: UIViewController {
         }
     }
 
-    // MARK: - Overlay
-
-    private func showChangeChannelView() {
-        UIViewPropertyAnimator(duration: 0.1, curve: .easeIn, animations: {
-        }).startAnimation()
-    }
-
-    private func hideChangeChannelView() {
-        UIViewPropertyAnimator(duration: 1, curve: .easeOut, animations: {
-        }).startAnimation()
-
-        leftConstraint?.constant = 0
-        rightConstraint?.constant = 0
-
-        UIViewPropertyAnimator(duration: 0.75, dampingRatio: 0.25, animations: {
-            self.view.layoutIfNeeded()
-        }).startAnimation()
-    }
-
     // MARK: - Touches
-/*
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        dump("pressesBegan: (\(presses), with: \(presses.first?.gestureRecognizers))")
-        super.pressesBegan(presses, with: event)
-    }
 
-    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        dump("pressesEnded: (\(presses), with: \(presses.first?.gestureRecognizers))")
-        super.pressesEnded(presses, with: event)
-    }
+    func handleTopTapGesture(_ gesture: UITapGestureRecognizer) {
+        if showChannelsContraint.isActive {
+            NSLayoutConstraint.deactivate([showChannelsContraint])
+            NSLayoutConstraint.activate([hideChannelsContraint])
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        showChangeChannelView()
-        dump("touchesBegan: (\(touches), with: \(touches.first?.location(in: touches.first?.view)))")
-        super.touchesBegan(touches, with: event)
-    }
+            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
+                self.view.layoutIfNeeded()
+            }).startAnimation()
+        } else {
+            NSLayoutConstraint.activate([showChannelsContraint])
+            NSLayoutConstraint.deactivate([hideChannelsContraint])
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        hideChangeChannelView()
-        dump("touchesEnded: (\(touches), with: \(touches.first?.location(in: touches.first?.view))")
-        super.touchesEnded(touches, with: event)
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        hideChangeChannelView()
-        dump("touchesCancelled: (\(touches), with: \(touches.first?.location(in: touches.first?.view))")
-        super.touchesCancelled(touches, with: event)
-    }
-
-    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        switch gesture.state {
-        case .possible:
-            print("possible")
-            break
-
-        case .began:
-            print("began")
-            showChangeChannelView()
-
-        case .changed:
-            print("changed")
-            showChangeChannelView()
-
-            let translation = gesture.translation(in: gesture.view).x / 6
-
-            if translation > 0 {
-                leftConstraint?.constant = abs(translation)
-                rightConstraint?.constant = -abs(translation)
-            } else if translation < 0 {
-                leftConstraint?.constant = -abs(translation)
-                rightConstraint?.constant = abs(translation)
-            }
-
-        case .ended:
-            print("ended")
-            let translation = gesture.translation(in: gesture.view).x
-            let boundsWidth = gesture.view?.frame.width ?? 0
-
-            if let channelIndex = currentChannelIndex, let channels = channels, channels.count > 1 {
-                if translation > 0 && translation > boundsWidth / 2 {
-                    let prevChannelIndex = (channelIndex == 0) ? channels.count - 1 : channelIndex - 1
-                    let url = DiamondClub.streamURL(for: channels[prevChannelIndex].number)
-                    currentChannelIndex = prevChannelIndex
-                    updatePlayerItem(playing: url)
-                } else if translation < 0  && -translation > boundsWidth / 2 {
-                    let nextChannelIndex = (channelIndex == channels.count - 1) ? 0 : channelIndex + 1
-                    let url = DiamondClub.streamURL(for: channels[nextChannelIndex].number)
-                    currentChannelIndex = nextChannelIndex
-                    updatePlayerItem(playing: url)
-                }
-            }
-
-            fallthrough
-
-        case .failed, .cancelled:
-            print("failed, cancelled")
-            hideChangeChannelView()
+            UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+                self.view.layoutIfNeeded()
+            }).startAnimation()
         }
     }
-*/
+
+    func handleBottomTapGesture(_ gesture: UITapGestureRecognizer) {
+        if showChatContraint.isActive {
+            NSLayoutConstraint.deactivate([showChatContraint])
+            NSLayoutConstraint.activate([hideChatContraint])
+
+            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
+                self.view.layoutIfNeeded()
+            }).startAnimation()
+        } else {
+            NSLayoutConstraint.activate([showChatContraint])
+            NSLayoutConstraint.deactivate([hideChatContraint])
+
+            UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+                self.view.layoutIfNeeded()
+            }).startAnimation()
+        }
+    }
+
     // MARK: - Change Channel Streams
 
     fileprivate func updatePlayerItem(playing url: URL) {
-/*        if let channelIndex = currentChannelIndex, let channels = channels, channelIndex < channels.count {
-
-            DiamondClub.getChannelIcon(for: channels[channelIndex].number) { (image) in
-                //
-            }
-
-            currentChannelLabel.text = channels[channelIndex].title
-
-            if channelIndex - 1 >= 0 {
-                prevChannelLabel.text = channels[channelIndex - 1].title
-            } else if channels.count > 0 {
-                prevChannelLabel.text = channels[channels.count - 1].title
-            } else {
-                prevChannelLabel.text = nil
-            }
-
-            if channelIndex + 1 < channels.count {
-                nextChannelLabel.text = channels[channelIndex + 1].title
-            } else if channels.count > 0 {
-                nextChannelLabel.text = channels[0].title
-            } else {
-                nextChannelLabel.text = nil
-            }
-        }
-*/
         let playerItem = AVPlayerItem(url: url)
         playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
         player.replaceCurrentItem(with: playerItem)
@@ -251,15 +169,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UIGestureRecognizerDelegate {
-/*
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return gestureRecognizer === pressGesture || (gestureRecognizer === panGesture && player.rate != 0)
-    }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return gestureRecognizer === pressGesture && gestureRecognizer.view === otherGestureRecognizer.view
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return gestureRecognizer === topTapGesture || gestureRecognizer === bottomTapGesture
     }
-*/
 }
 
 extension ViewController: UITableViewDataSource {
@@ -282,13 +195,15 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return channels?.count ?? 0
+        return channels?.count ?? 6 // TODO: remove
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath) as! ChannelCollectionViewCell
 
         guard let item = channels?[indexPath.row] else {
+            cell.titleLabel.text = "Test"
+            cell.iconImageView.image = #imageLiteral(resourceName: "offline")
             return cell
         }
 

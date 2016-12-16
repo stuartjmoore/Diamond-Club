@@ -12,6 +12,23 @@ import AVKit
 private var AVPlayerItemStatusObservationContext = 0
 private var UITableViewContentSizeObservationContext = 1
 
+extension NSNumber {
+
+    static var upArrow: NSNumber {
+        return NSNumber(integerLiteral: UIPressType.upArrow.rawValue)
+    }
+
+    static var downArrow: NSNumber {
+        return NSNumber(integerLiteral: UIPressType.downArrow.rawValue)
+    }
+
+    static var menu: NSNumber {
+        return NSNumber(integerLiteral: UIPressType.menu.rawValue)
+    }
+
+
+}
+
 class ViewController: UIViewController {
 
     fileprivate var playerItem: AVPlayerItem? {
@@ -28,6 +45,7 @@ class ViewController: UIViewController {
     @IBOutlet private var showChannelsContraint: NSLayoutConstraint!
     @IBOutlet private var hideChannelsContraint: NSLayoutConstraint!
     @IBOutlet fileprivate var channelCollectionView: UICollectionView!
+    @IBOutlet fileprivate var channelBlackView: UIView!
 
     @IBOutlet private var showChatContraint: NSLayoutConstraint!
     @IBOutlet private var hideChatContraint: NSLayoutConstraint!
@@ -36,7 +54,7 @@ class ViewController: UIViewController {
     fileprivate let topTapGesture = UITapGestureRecognizer()
     fileprivate let bottomTapGesture = UITapGestureRecognizer()
 
-    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "chat", nick: "AppleTV\(arc4random_uniform(10_000))")
+    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "test", nick: "AppleTV\(arc4random_uniform(10_000))")
     fileprivate var chatData: [(username: String, message: String)] = []
 
     fileprivate var channels: [Channel]? {
@@ -50,7 +68,7 @@ class ViewController: UIViewController {
     // MARK: -
 
     override var preferredFocusedView: UIView? {
-        return playerViewController.view
+        return showChannelsContraint.isActive ? channelCollectionView : playerViewController.view
     }
 
     // MARK: -
@@ -59,6 +77,7 @@ class ViewController: UIViewController {
         chatTableView?.addObserver(self, forKeyPath: #keyPath(UITableView.contentSize), options: [.initial], context: &UITableViewContentSizeObservationContext)
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 66
+        chatTableView.mask = nil
 
         chatRealm.delegate = self
         chatRealm.start()
@@ -77,12 +96,17 @@ class ViewController: UIViewController {
         playerViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
         topTapGesture.addTarget(self, action: #selector(handleTopTapGesture(_:)))
-        topTapGesture.allowedPressTypes = [NSNumber(integerLiteral: UIPressType.upArrow.rawValue)]
+        topTapGesture.allowedPressTypes = [.upArrow]
         topTapGesture.delegate = self
         playerViewController.view.addGestureRecognizer(topTapGesture)
 
+        let hideChannelTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTopTapGesture(_:)))
+        hideChannelTapGesture.allowedPressTypes = [.upArrow, .downArrow, .menu]
+        hideChannelTapGesture.delegate = self
+        channelCollectionView.addGestureRecognizer(hideChannelTapGesture)
+
         bottomTapGesture.addTarget(self, action: #selector(handleBottomTapGesture(_:)))
-        bottomTapGesture.allowedPressTypes = [NSNumber(integerLiteral: UIPressType.downArrow.rawValue)]
+        bottomTapGesture.allowedPressTypes = [.downArrow]
         bottomTapGesture.delegate = self
         playerViewController.view.addGestureRecognizer(bottomTapGesture)
 
@@ -104,6 +128,7 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([hideChannelsContraint])
 
             UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
+                self.channelBlackView.alpha = 0
                 self.view.layoutIfNeeded()
             }).startAnimation()
         } else {
@@ -111,9 +136,12 @@ class ViewController: UIViewController {
             NSLayoutConstraint.deactivate([hideChannelsContraint])
 
             UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+                self.channelBlackView.alpha = 1
                 self.view.layoutIfNeeded()
             }).startAnimation()
         }
+
+        setNeedsFocusUpdate()
     }
 
     func handleBottomTapGesture(_ gesture: UITapGestureRecognizer) {
@@ -195,18 +223,19 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return channels?.count ?? 6 // TODO: remove
+        return (channels?.count ?? 6) + 2 // TODO: remove
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath) as! ChannelCollectionViewCell
 
-        guard let item = channels?[indexPath.row] else {
+        guard let channels = channels, indexPath.row < channels.count else {
             cell.titleLabel.text = "Test"
             cell.iconImageView.image = #imageLiteral(resourceName: "offline")
             return cell
         }
 
+        let item = channels[indexPath.row]
         cell.titleLabel.text = item.title
         cell.iconImageView.image = nil
 
@@ -222,12 +251,17 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = channels?[indexPath.row] else {
+        guard let channels = channels, indexPath.row < channels.count else {
             return
         }
 
+        let item = channels[indexPath.row]
         let url = DiamondClub.streamURL(for: item.number)
         updatePlayerItem(playing: url)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
+        return context.nextFocusedIndexPath != nil
     }
 
 }

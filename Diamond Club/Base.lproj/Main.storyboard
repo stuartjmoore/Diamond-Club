@@ -163,6 +163,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Currently Broadcasting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-88-ACn">
+                                <rect key="frame" x="727" y="517" width="467" height="47"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="0.397737069" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrC-8t-j4D" userLabel="Chat Visual Effect View">
                                 <rect key="frame" x="0.0" y="1080" width="1920" height="154"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="J6f-B0-O9y">
@@ -215,9 +223,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xrC-8t-j4D" secondAttribute="trailing" id="1EM-Pa-md0"/>
+                            <constraint firstItem="PtP-88-ACn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3uv-gU-AUQ"/>
                             <constraint firstAttribute="trailing" secondItem="z6t-O8-Ctd" secondAttribute="trailing" id="51h-hG-4kg"/>
                             <constraint firstItem="jg3-ks-BXH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7DH-Je-UI6"/>
                             <constraint firstAttribute="trailing" secondItem="jg3-ks-BXH" secondAttribute="trailing" id="7Tn-pW-ZZg"/>
+                            <constraint firstItem="PtP-88-ACn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AcE-gz-CkG"/>
                             <constraint firstItem="jg3-ks-BXH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/3" id="Ixq-XW-zEz"/>
                             <constraint firstItem="xrC-8t-j4D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="No1-cL-Z2u"/>
                             <constraint firstItem="z6t-O8-Ctd" firstAttribute="top" secondItem="jg3-ks-BXH" secondAttribute="bottom" id="OOD-zU-Vir"/>
@@ -240,6 +250,7 @@
                         <outlet property="channelBlackView" destination="z6t-O8-Ctd" id="D7x-sz-cS3"/>
                         <outlet property="hideChannelsContraint" destination="vet-01-Uiv" id="yc5-ve-cMN"/>
                         <outlet property="hideChatContraint" destination="ivB-os-hCs" id="Zqi-26-IIE"/>
+                        <outlet property="notBroadcastingLabel" destination="PtP-88-ACn" id="ceC-c3-9ix"/>
                         <outlet property="showChannelsContraint" destination="u0h-7e-Jok" id="ZYL-gL-x9e"/>
                         <outlet property="showChatContraint" destination="hyL-6a-mHc" id="G8r-2G-hj2"/>
                     </connections>

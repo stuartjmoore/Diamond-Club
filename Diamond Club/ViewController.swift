@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     fileprivate let player = AVPlayer()
     fileprivate let playerViewController = AVPlayerViewController()
 
+    @IBOutlet fileprivate var notBroadcastingLabel: UILabel!
+
     @IBOutlet private var showChannelsContraint: NSLayoutConstraint!
     @IBOutlet private var hideChannelsContraint: NSLayoutConstraint!
     fileprivate var channelGuideViewController: ChannelGuideViewController!
@@ -145,6 +147,20 @@ class ViewController: UIViewController {
         if context == &AVPlayerItemStatusObservationContext {
             if case .readyToPlay? = playerItem?.status, player.rate == 0 {
                 player.play()
+            }
+
+            if case .failed? = playerItem?.status {
+                let fadeInAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
+                    self.notBroadcastingLabel.alpha = 1
+                }
+
+                fadeInAnimator.startAnimation()
+            } else {
+                let fadeOutAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) {
+                    self.notBroadcastingLabel.alpha = 0
+                }
+
+                fadeOutAnimator.startAnimation()
             }
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)

@@ -53,6 +53,10 @@ struct DiamondClub {
     }
 
     static func getChannelIcon(for channel: Int, completion: @escaping (UIImage) -> Void) {
+        guard channel > 0 else {
+            return completion(#imageLiteral(resourceName: "twentyFourSeven"))
+        }
+
         let session = URLSession(configuration: .ephemeral)
         var request = URLRequest(url: DiamondClub.iconURL(for: channel))
         request.setValue(userAgentValue, forHTTPHeaderField: "User-Agent")

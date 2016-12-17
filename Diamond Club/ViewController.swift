@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 
     @IBOutlet private var showChannelsContraint: NSLayoutConstraint!
     @IBOutlet private var hideChannelsContraint: NSLayoutConstraint!
-    @IBOutlet fileprivate var channelCollectionView: UICollectionView!
+    fileprivate var channelGuideViewController: ChannelGuideViewController!
     @IBOutlet fileprivate var channelBlackView: UIView!
 
     @IBOutlet private var showChatContraint: NSLayoutConstraint!
@@ -40,17 +40,17 @@ class ViewController: UIViewController {
     private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "test", nick: "AppleTV\(arc4random_uniform(10_000))")
     fileprivate var chatData: [(username: String, message: String)] = []
 
-    fileprivate var currentChannelNumber: Int?
-    fileprivate var channels: [Channel]? {
-        didSet {
-            channelCollectionView?.reloadData()
-        }
-    }
-
     // MARK: -
 
     override var preferredFocusedView: UIView? {
-        return showChannelsContraint.isActive ? channelCollectionView : playerViewController.view
+        return showChannelsContraint.isActive ? channelGuideViewController.collectionView : playerViewController.view
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ChannelGuideViewControllerSegue" {
+            channelGuideViewController = segue.destination as? ChannelGuideViewController
+            channelGuideViewController.delegate = self
+        }
     }
 
     // MARK: -
@@ -82,31 +82,16 @@ class ViewController: UIViewController {
         topTapGesture.delegate = self
         playerViewController.view.addGestureRecognizer(topTapGesture)
 
-        let hideChannelTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTopTapGesture(_:)))
-        hideChannelTapGesture.allowedPressTypes = [.upArrow, .downArrow, .menu]
-        hideChannelTapGesture.delegate = self
-        channelCollectionView.addGestureRecognizer(hideChannelTapGesture)
-
         bottomTapGesture.addTarget(self, action: #selector(handleBottomTapGesture(_:)))
         bottomTapGesture.allowedPressTypes = [.downArrow]
         bottomTapGesture.delegate = self
         playerViewController.view.addGestureRecognizer(bottomTapGesture)
-
-        DiamondClub.getLiveChannels() { (channels) in
-            self.channels = channels
-
-            if let channelIndex = (channels.count > 0 ? 0 : nil) {
-                let url = DiamondClub.streamURL(for: channels[channelIndex].number)
-                self.currentChannelNumber = channels[channelIndex].number
-                self.updatePlayerItem(playing: url)
-            }
-        }
     }
 
     // MARK: - Touches
 
     func handleTopTapGesture(_ gesture: UITapGestureRecognizer) {
-        toggleChannelGuide(display: hideChannelsContraint.isActive)
+        toggleChannelGuide(display: true)
     }
 
     func handleBottomTapGesture(_ gesture: UITapGestureRecognizer) {
@@ -149,16 +134,6 @@ class ViewController: UIViewController {
         setNeedsFocusUpdate()
     }
 
-    // MARK: - Change Channel Streams
-
-    fileprivate func updatePlayerItem(playing url: URL) {
-        let playerItem = AVPlayerItem(url: url)
-        playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-        player.replaceCurrentItem(with: playerItem)
-
-        self.playerItem = playerItem
-    }
-
     // MARK: - KVO
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -183,6 +158,22 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: ChannelGuideViewControllerDelegate {
+
+    func updatePlayerItem(playing url: URL) {
+        let playerItem = AVPlayerItem(url: url)
+        playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+        player.replaceCurrentItem(with: playerItem)
+
+        self.playerItem = playerItem
+    }
+
+    func dismissChannelGuide() {
+        toggleChannelGuide(display: false)
+    }
+
+}
+
 extension ViewController: UIGestureRecognizerDelegate {
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -203,61 +194,6 @@ extension ViewController: UITableViewDataSource {
         cell.messageLabel.text = chatData[indexPath.row].message
 
         return cell
-    }
-
-}
-
-extension ViewController: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return channels?.count ?? 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath) as! ChannelCollectionViewCell
-
-        guard let channels = channels, indexPath.row < channels.count else {
-            return cell
-        }
-
-        let item = channels[indexPath.row]
-        cell.titleLabel.text = item.title
-        cell.iconImageView.image = nil
-
-        DiamondClub.getChannelIcon(for: item.number) { (image) in
-            cell.iconImageView.image = image
-        }
-
-        return cell
-    }
-
-}
-
-extension ViewController: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let channels = channels, indexPath.row < channels.count else {
-            return
-        }
-
-        toggleChannelGuide(display: false)
-
-        let item = channels[indexPath.row]
-        let url = DiamondClub.streamURL(for: item.number)
-        currentChannelNumber = item.number
-        updatePlayerItem(playing: url)
-    }
-
-    func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
-        guard let index = channels?.index(where: { return $0.number == self.currentChannelNumber }) else {
-            return nil
-        }
-
-        return IndexPath(item: index, section: 0)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
-        return context.nextFocusedIndexPath != nil
     }
 
 }

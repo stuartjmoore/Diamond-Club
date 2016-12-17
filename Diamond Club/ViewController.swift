@@ -12,6 +12,9 @@ import AVKit
 private var AVPlayerItemStatusObservationContext = 0
 private var UITableViewContentSizeObservationContext = 1
 
+private let ChannelGuideViewControllerSegue = "ChannelGuideViewControllerSegue"
+private let ChatRealmViewControllerSegue = "ChatRealmViewControllerSegue"
+
 class ViewController: UIViewController {
 
     fileprivate var playerItem: AVPlayerItem? {
@@ -44,10 +47,10 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ChannelGuideViewControllerSegue" {
+        if segue.identifier == ChannelGuideViewControllerSegue {
             channelGuideViewController = segue.destination as? ChannelGuideViewController
             channelGuideViewController.delegate = self
-        } else if segue.identifier == "ChatRealmViewControllerSegue" {
+        } else if segue.identifier == ChatRealmViewControllerSegue {
             chatRealmViewController = segue.destination as? ChatRealmViewController
         }
     }

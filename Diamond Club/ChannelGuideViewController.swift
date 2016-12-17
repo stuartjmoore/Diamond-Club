@@ -91,6 +91,10 @@ extension ChannelGuideViewController: UICollectionViewDelegate {
             return
         }
 
+        guard indexPath.row != channels.index(where: { return $0.number == self.currentNumber }) else {
+            return
+        }
+
         let item = channels[indexPath.row]
         let url = DiamondClub.streamURL(for: item.number)
         currentNumber = item.number

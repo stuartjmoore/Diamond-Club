@@ -60,10 +60,10 @@ class ViewController: UIViewController {
         chatTableView.rowHeight = UITableViewAutomaticDimension
         chatTableView.estimatedRowHeight = 66
         chatTableView.mask = nil
-
+/*
         chatRealm.delegate = self
         chatRealm.start()
-
+*/
         playerViewController.player = player
         playerViewController.view.frame = view.bounds
 

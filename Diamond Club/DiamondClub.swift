@@ -15,6 +15,7 @@ private let userAgentValue = "diamondclub/appletv"
 
 private let allChannelsURL = URL(string: "\(hostPath)/\(apiPath)/statusv2.php")!
 private let liveChannelsURL = URL(string: "\(hostPath)/\(apiPath)/channelsv2.php")!
+private let twentyFourSevenURL = URL(string: "https://ingest.diamondclub.tv/high/dctv.m3u8")!
 
 private let allChannelsKey = "livestreams"
 private let liveChannelsKey = "assignedchannels"
@@ -39,7 +40,7 @@ struct DiamondClub {
             guard let JSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return print("No JSON") }
             guard let channelsJSON = JSON?[liveChannelsKey] as? [[String: Any]] else { return print("No `\(liveChannelsKey)`") }
 
-            let channels: [Channel] = channelsJSON.flatMap(Channel.init)
+            let channels: [Channel] = [.TwentyFourSeven] + channelsJSON.flatMap(Channel.init)
 
             dump(channels)
 
@@ -101,5 +102,16 @@ struct Channel {
         self.description = description?.isEmpty == false ? description : nil
         self.currentGame = currentGame?.isEmpty == false ? currentGame : nil
     }
+
+    init(id: Int, number: Int, title: String, imageURL: URL?, description: String?, currentGame: String?) {
+        self.id = id
+        self.number = number
+        self.title = title
+        self.imageURL = imageURL
+        self.description = description
+        self.currentGame = currentGame
+    }
+
+    static let TwentyFourSeven = Channel(id: 0, number: 0, title: "24/7", imageURL: nil, description: nil, currentGame: nil)
 
 }

@@ -22,7 +22,7 @@ class ChatRealmViewController: UIViewController {
     override func viewDidLoad() {
         tableView?.addObserver(self, forKeyPath: #keyPath(UITableView.contentSize), options: [.initial], context: &UITableViewContentSizeObservationContext)
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 66
+        tableView.estimatedRowHeight = 35
         tableView.mask = nil
 
         chatRealm.delegate = self

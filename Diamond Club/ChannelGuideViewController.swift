@@ -25,6 +25,7 @@ class ChannelGuideViewController: UIViewController {
     }
 
     @IBOutlet fileprivate(set) var collectionView: UICollectionView!
+    @IBOutlet fileprivate(set) var tableView: UITableView!
 
     fileprivate(set) var currentNumber: Int?
 
@@ -36,6 +37,9 @@ class ChannelGuideViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 35
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         tapGesture.allowedPressTypes = [.upArrow, .downArrow, .menu]
@@ -57,6 +61,8 @@ class ChannelGuideViewController: UIViewController {
     }
 
 }
+
+// MARK: - Channels
 
 extension ChannelGuideViewController: UICollectionViewDataSource {
 
@@ -113,6 +119,45 @@ extension ChannelGuideViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
         return context.nextFocusedIndexPath != nil
+    }
+
+}
+
+// MARK: - Schedule
+
+extension ChannelGuideViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Today"
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! MessageTableViewCell
+
+        cell.usernameLabel.text = "12:00 PM"
+        cell.messageLabel.text = "The Morning Stream"
+
+        return cell
+    }
+
+}
+
+extension ChannelGuideViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else {
+            return
+        }
+
+        headerView.textLabel?.textColor = .white
     }
 
 }

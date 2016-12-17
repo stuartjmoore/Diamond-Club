@@ -106,25 +106,7 @@ class ViewController: UIViewController {
     // MARK: - Touches
 
     func handleTopTapGesture(_ gesture: UITapGestureRecognizer) {
-        if showChannelsContraint.isActive {
-            NSLayoutConstraint.deactivate([showChannelsContraint])
-            NSLayoutConstraint.activate([hideChannelsContraint])
-
-            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
-                self.channelBlackView.alpha = 0
-                self.view.layoutIfNeeded()
-            }).startAnimation()
-        } else {
-            NSLayoutConstraint.activate([showChannelsContraint])
-            NSLayoutConstraint.deactivate([hideChannelsContraint])
-
-            UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
-                self.channelBlackView.alpha = 1
-                self.view.layoutIfNeeded()
-            }).startAnimation()
-        }
-
-        setNeedsFocusUpdate()
+        toggleChannelGuide(display: hideChannelsContraint.isActive)
     }
 
     func handleBottomTapGesture(_ gesture: UITapGestureRecognizer) {
@@ -143,6 +125,28 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }).startAnimation()
         }
+    }
+
+    fileprivate func toggleChannelGuide(display: Bool) {
+        if display {
+            NSLayoutConstraint.activate([showChannelsContraint])
+            NSLayoutConstraint.deactivate([hideChannelsContraint])
+
+            UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+                self.channelBlackView.alpha = 1
+                self.view.layoutIfNeeded()
+            }).startAnimation()
+        } else {
+            NSLayoutConstraint.deactivate([showChannelsContraint])
+            NSLayoutConstraint.activate([hideChannelsContraint])
+
+            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
+                self.channelBlackView.alpha = 0
+                self.view.layoutIfNeeded()
+            }).startAnimation()
+        }
+        
+        setNeedsFocusUpdate()
     }
 
     // MARK: - Change Channel Streams
@@ -235,6 +239,8 @@ extension ViewController: UICollectionViewDelegate {
         guard let channels = channels, indexPath.row < channels.count else {
             return
         }
+
+        toggleChannelGuide(display: false)
 
         let item = channels[indexPath.row]
         let url = DiamondClub.streamURL(for: item.number)

@@ -83,7 +83,7 @@
                                         <constraint firstItem="sqj-vb-jA7" firstAttribute="leading" secondItem="J6f-B0-O9y" secondAttribute="leading" id="Gum-QC-W3s"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jg3-ks-BXH" userLabel="Channels Visual Effect View">
                                 <rect key="frame" x="0.0" y="-360" width="1920" height="360"/>
@@ -152,7 +152,7 @@
                                         <constraint firstAttribute="trailing" secondItem="fVi-eU-LyX" secondAttribute="trailing" id="gmx-Kw-3Gb"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6t-O8-Ctd" userLabel="Black View">
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>

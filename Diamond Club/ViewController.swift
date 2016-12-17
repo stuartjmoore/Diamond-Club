@@ -12,23 +12,6 @@ import AVKit
 private var AVPlayerItemStatusObservationContext = 0
 private var UITableViewContentSizeObservationContext = 1
 
-extension NSNumber {
-
-    static var upArrow: NSNumber {
-        return NSNumber(integerLiteral: UIPressType.upArrow.rawValue)
-    }
-
-    static var downArrow: NSNumber {
-        return NSNumber(integerLiteral: UIPressType.downArrow.rawValue)
-    }
-
-    static var menu: NSNumber {
-        return NSNumber(integerLiteral: UIPressType.menu.rawValue)
-    }
-
-
-}
-
 class ViewController: UIViewController {
 
     fileprivate var playerItem: AVPlayerItem? {
@@ -57,11 +40,10 @@ class ViewController: UIViewController {
     private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "test", nick: "AppleTV\(arc4random_uniform(10_000))")
     fileprivate var chatData: [(username: String, message: String)] = []
 
+    fileprivate var currentChannelNumber: Int?
     fileprivate var channels: [Channel]? {
         didSet {
             channelCollectionView?.reloadData()
-            channelCollectionView?.setNeedsFocusUpdate()
-            channelCollectionView?.updateFocusIfNeeded()
         }
     }
 
@@ -115,6 +97,7 @@ class ViewController: UIViewController {
 
             if let channelIndex = (channels.count > 0 ? 0 : nil) {
                 let url = DiamondClub.streamURL(for: channels[channelIndex].number)
+                self.currentChannelNumber = channels[channelIndex].number
                 self.updatePlayerItem(playing: url)
             }
         }
@@ -223,15 +206,13 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (channels?.count ?? 6) + 2 // TODO: remove
+        return channels?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath) as! ChannelCollectionViewCell
 
         guard let channels = channels, indexPath.row < channels.count else {
-            cell.titleLabel.text = "Test"
-            cell.iconImageView.image = #imageLiteral(resourceName: "offline")
             return cell
         }
 
@@ -257,7 +238,16 @@ extension ViewController: UICollectionViewDelegate {
 
         let item = channels[indexPath.row]
         let url = DiamondClub.streamURL(for: item.number)
+        currentChannelNumber = item.number
         updatePlayerItem(playing: url)
+    }
+
+    func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
+        guard let index = channels?.index(where: { return $0.number == self.currentChannelNumber }) else {
+            return nil
+        }
+
+        return IndexPath(item: index, section: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {

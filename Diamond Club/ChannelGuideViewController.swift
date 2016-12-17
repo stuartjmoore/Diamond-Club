@@ -10,7 +10,7 @@ import UIKit
 
 protocol ChannelGuideViewControllerDelegate: class {
     func updatePlayerItem(playing: URL)
-    func dismissChannelGuide()
+    func dismissChannelGuide(completion: (() -> Void)?)
 }
 
 class ChannelGuideViewController: UIViewController {
@@ -57,7 +57,7 @@ class ChannelGuideViewController: UIViewController {
     }
 
     func handleTapGesture(_ gesture: UITapGestureRecognizer) {
-        delegate?.dismissChannelGuide()
+        delegate?.dismissChannelGuide(completion: nil)
     }
 
 }
@@ -105,8 +105,9 @@ extension ChannelGuideViewController: UICollectionViewDelegate {
         let url = DiamondClub.streamURL(for: item.number)
         currentNumber = item.number
 
-        delegate?.dismissChannelGuide()
-        delegate?.updatePlayerItem(playing: url)
+        delegate?.dismissChannelGuide() {
+            self.delegate?.updatePlayerItem(playing: url)
+        }
     }
 
     func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
@@ -132,7 +133,7 @@ extension ChannelGuideViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return 2
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

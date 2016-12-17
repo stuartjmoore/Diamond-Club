@@ -89,42 +89,53 @@ class ViewController: UIViewController {
     }
 
     func handleBottomTapGesture(_ gesture: UITapGestureRecognizer) {
+        let animator: UIViewPropertyAnimator
+
         if showChatContraint.isActive {
             NSLayoutConstraint.deactivate([showChatContraint])
             NSLayoutConstraint.activate([hideChatContraint])
 
-            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
+            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
                 self.view.layoutIfNeeded()
-            }).startAnimation()
+            }
         } else {
             NSLayoutConstraint.activate([showChatContraint])
             NSLayoutConstraint.deactivate([hideChatContraint])
 
-            UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) {
                 self.view.layoutIfNeeded()
-            }).startAnimation()
+            }
         }
+
+        animator.startAnimation()
     }
 
-    fileprivate func toggleChannelGuide(display: Bool) {
+    fileprivate func toggleChannelGuide(display: Bool, completion: (() -> Void)? = nil) {
+        let animator: UIViewPropertyAnimator
+
         if display {
             NSLayoutConstraint.activate([showChannelsContraint])
             NSLayoutConstraint.deactivate([hideChannelsContraint])
 
-            UIViewPropertyAnimator(duration: 0.3, curve: .easeOut, animations: {
+            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) {
                 self.channelBlackView.alpha = 1
                 self.view.layoutIfNeeded()
-            }).startAnimation()
+            }
         } else {
             NSLayoutConstraint.deactivate([showChannelsContraint])
             NSLayoutConstraint.activate([hideChannelsContraint])
 
-            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
+            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
                 self.channelBlackView.alpha = 0
                 self.view.layoutIfNeeded()
-            }).startAnimation()
+            }
         }
-        
+
+        animator.addCompletion { _ in
+            completion?()
+        }
+
+        animator.startAnimation()
         setNeedsFocusUpdate()
     }
 
@@ -152,6 +163,8 @@ class ViewController: UIViewController {
 extension ViewController: ChannelGuideViewControllerDelegate {
 
     func updatePlayerItem(playing url: URL) {
+        player.replaceCurrentItem(with: nil)
+
         let playerItem = AVPlayerItem(url: url)
         playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
         player.replaceCurrentItem(with: playerItem)
@@ -159,8 +172,8 @@ extension ViewController: ChannelGuideViewControllerDelegate {
         self.playerItem = playerItem
     }
 
-    func dismissChannelGuide() {
-        toggleChannelGuide(display: false)
+    func dismissChannelGuide(completion: (() -> Void)?) {
+        toggleChannelGuide(display: false, completion: completion)
     }
 
 }

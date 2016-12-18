@@ -35,6 +35,12 @@ class ChannelGuideViewController: UIViewController {
         }
     }
 
+    fileprivate var scheduleData: [(title: String, items: [(time: String, title: String)])] = [] {
+        didSet {
+            tableView?.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +59,18 @@ class ChannelGuideViewController: UIViewController {
                 self.currentNumber = channels[channelIndex].number
                 self.delegate?.updatePlayerItem(playing: url)
             }
+        }
+
+        ScheduleClient().week { (scheduled) in
+            dump(scheduled)
+
+            self.scheduleData = scheduled.map({ (events) in
+                let dateString = events.first?.airingDate.dateString ?? ""
+
+                return (title: dateString, items: events.map { (event) in
+                    return (time: event.airingDate.timeString, title: event.title)
+                })
+            })
         }
     }
 
@@ -129,22 +147,23 @@ extension ChannelGuideViewController: UICollectionViewDelegate {
 extension ChannelGuideViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return scheduleData.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return scheduleData[section].items.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Today"
+        return scheduleData[section].title
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! MessageTableViewCell
 
-        cell.usernameLabel.text = "12:00 PM"
-        cell.messageLabel.text = "The Morning Stream"
+        let event = scheduleData[indexPath.section].items[indexPath.row]
+        cell.usernameLabel.text = event.time
+        cell.messageLabel.text = event.title
 
         return cell
     }

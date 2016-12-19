@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DiamondClubKit
 import ScheduleKit
 
 protocol ChannelGuideViewControllerDelegate: class {

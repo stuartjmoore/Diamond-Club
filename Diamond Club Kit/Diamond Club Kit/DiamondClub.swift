@@ -20,17 +20,17 @@ private let twentyFourSevenURL = URL(string: "https://ingest.diamondclub.tv/high
 private let allChannelsKey = "livestreams"
 private let liveChannelsKey = "assignedchannels"
 
-struct DiamondClub {
+public struct DiamondClub {
 
-    static func iconURL(for channel: Int) -> URL {
+    public static func iconURL(for channel: Int) -> URL {
         return URL(string: "\(hostPath)/\(apiPath)/hlsredirect.php?c=\(channel)&i=1")!
     }
 
-    static func streamURL(for channel: Int) -> URL {
+    public static func streamURL(for channel: Int) -> URL {
         return URL(string: "\(hostPath)/\(apiPath)/hlsredirect.php?c=\(channel)")!
     }
 
-    static func getLiveChannels(completion: @escaping ([Channel]) -> Void) {
+    public static func getLiveChannels(completion: @escaping ([Channel]) -> Void) {
         let session = URLSession(configuration: .ephemeral)
         var request = URLRequest(url: liveChannelsURL)
         request.setValue(userAgentValue, forHTTPHeaderField: "User-Agent")
@@ -52,7 +52,7 @@ struct DiamondClub {
         task.resume()
     }
 
-    static func getChannelIcon(for channel: Int, completion: @escaping (UIImage) -> Void) {
+    public static func getChannelIcon(for channel: Int, completion: @escaping (UIImage) -> Void) {
         guard channel > 0 else {
             return completion(#imageLiteral(resourceName: "twentyFourSeven"))
         }
@@ -75,16 +75,16 @@ struct DiamondClub {
     
 }
 
-struct Channel {
+public struct Channel {
 
-    let id: Int
-    let number: Int
-    let title: String
-    let imageURL: URL?
-    let description: String?
-    let currentGame: String?
+    public let id: Int
+    public let number: Int
+    public let title: String
+    public let imageURL: URL?
+    public let description: String?
+    public let currentGame: String?
 
-    init?(JSON: [String: Any]) {
+    public init?(JSON: [String: Any]) {
         guard let id = JSON["streamid"] as? Int else { return nil }
         guard let number = JSON["channel"] as? Int else { return nil }
 
@@ -107,7 +107,7 @@ struct Channel {
         self.currentGame = currentGame?.isEmpty == false ? currentGame : nil
     }
 
-    init(id: Int, number: Int, title: String, imageURL: URL?, description: String?, currentGame: String?) {
+    public init(id: Int, number: Int, title: String, imageURL: URL?, description: String?, currentGame: String?) {
         self.id = id
         self.number = number
         self.title = title
@@ -116,6 +116,6 @@ struct Channel {
         self.currentGame = currentGame
     }
 
-    static let TwentyFourSeven = Channel(id: 0, number: 0, title: "24/7", imageURL: nil, description: nil, currentGame: nil)
+    public static let TwentyFourSeven = Channel(id: 0, number: 0, title: "24/7", imageURL: nil, description: nil, currentGame: nil)
 
 }

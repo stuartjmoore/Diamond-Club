@@ -19,7 +19,6 @@
 		17D94DCE1DFC9EE300509487 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D94DCD1DFC9EE300509487 /* Assets.xcassets */; };
 		17D94DD81DFCA13700509487 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D94DD61DFCA13700509487 /* AVFoundation.framework */; };
 		17D94DD91DFCA13700509487 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D94DD71DFCA13700509487 /* AVKit.framework */; };
-		17D94DDB1DFCA72700509487 /* DiamondClub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DDA1DFCA72700509487 /* DiamondClub.swift */; };
 		FD3890CE1CFC0AAE31E8A7F5 /* Pods_Diamond_Club.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +37,6 @@
 		17D94DCF1DFC9EE300509487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D94DD61DFCA13700509487 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17D94DD71DFCA13700509487 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		17D94DDA1DFCA72700509487 /* DiamondClub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondClub.swift; sourceTree = "<group>"; };
 		17E937BA1E089C290054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
 		17E937D31E08A1C80054CB3E /* IRCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IRCKit.framework; path = "IRC Kit/build/Debug-appletvos/IRCKit.framework"; sourceTree = "<group>"; };
 		17E937D41E08A1C80054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				173517161E04DE92005219E0 /* ChatRealmViewController.swift */,
 				17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */,
 				172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */,
-				17D94DDA1DFCA72700509487 /* DiamondClub.swift */,
 				173517121E04D689005219E0 /* NSNumber+UIPressType.swift */,
 				17D94DCA1DFC9EE300509487 /* Main.storyboard */,
 				17D94DCD1DFC9EE300509487 /* Assets.xcassets */,
@@ -245,7 +242,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				172E2ACF1E034DE6001497DA /* ChannelCollectionViewCell.swift in Sources */,
-				17D94DDB1DFCA72700509487 /* DiamondClub.swift in Sources */,
 				173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */,
 				17D94DC91DFC9EE300509487 /* ViewController.swift in Sources */,
 				173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */,

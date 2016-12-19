@@ -4,17 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Diamond Club.xcscheme</key>
+		<key>Diamond Club Kit.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9E1B5B25FD7AFF5DD7A06125F75A0087</key>
+		<key>17B883061E08A68300E22F26</key>
 		<dict>
 			<key>primary</key>
 			<true/>

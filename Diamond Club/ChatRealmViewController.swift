@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IRCKit
 
 private var UITableViewContentSizeObservationContext = 1
 

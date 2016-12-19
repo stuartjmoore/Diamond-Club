@@ -8,14 +8,14 @@
 
 import Foundation
 
-class IRCClient {
+public class IRCClient {
 
-    enum Command: RawRepresentable {
-        typealias RawValue = String
+    public enum Command: RawRepresentable {
+        public typealias RawValue = String
 
         case user, nick, ping, pong, join, message, kick, quit, part, mode, notice, error, code(value: Int)
 
-        init?(rawValue: RawValue) {
+        public init?(rawValue: RawValue) {
             switch rawValue {
             case "USER": self = .user
             case "NICK": self = .nick
@@ -38,7 +38,7 @@ class IRCClient {
             }
         }
 
-        var rawValue: RawValue {
+        public var rawValue: RawValue {
             switch self {
             case .user: return "USER"
             case .nick: return "NICK"
@@ -67,7 +67,7 @@ class IRCClient {
         return URLSession.shared.streamTask(withHostName: self.host, port: self.port)
     }()
 
-    weak var delegate: IRCClientDelegate?
+    public weak var delegate: IRCClientDelegate?
 
     let host: String
     let port: Int
@@ -75,14 +75,14 @@ class IRCClient {
     let room: String
     let nick: String
 
-    init(host: String, port: Int, room: String, nick: String) {
+    public init(host: String, port: Int, room: String, nick: String) {
         self.host = host
         self.port = port
         self.room = room
         self.nick = nick
     }
 
-    func start() {
+    public func start() {
         readFromStream()
         task.resume()
 
@@ -251,7 +251,7 @@ class IRCClient {
     }
 }
 
-protocol IRCClientDelegate: class {
+public protocol IRCClientDelegate: class {
     func IRC(_ client: IRCClient, didReceiveCommand: IRCClient.Command, withMessage: String?, andArguments: [String], fromSource: String?)
     func IRC(_ client: IRCClient, didReceiveMessage: String, fromUsername: String)
     func IRC(_ client: IRCClient, didReceiveError: Error)

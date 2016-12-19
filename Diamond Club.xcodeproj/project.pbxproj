@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1719F4041DFE373200E8C94D /* IRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1719F4031DFE373200E8C94D /* IRC.swift */; };
 		172E2ACF1E034DE6001497DA /* ChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */; };
 		173517131E04D689005219E0 /* NSNumber+UIPressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517121E04D689005219E0 /* NSNumber+UIPressType.swift */; };
 		173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517141E04DE80005219E0 /* ChannelGuideViewController.swift */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1719F4031DFE373200E8C94D /* IRC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRC.swift; sourceTree = "<group>"; };
 		172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCell.swift; sourceTree = "<group>"; };
 		173517121E04D689005219E0 /* NSNumber+UIPressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+UIPressType.swift"; sourceTree = "<group>"; };
 		173517141E04DE80005219E0 /* ChannelGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelGuideViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +40,8 @@
 		17D94DD71DFCA13700509487 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		17D94DDA1DFCA72700509487 /* DiamondClub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondClub.swift; sourceTree = "<group>"; };
 		17E937BA1E089C290054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
+		17E937D31E08A1C80054CB3E /* IRCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IRCKit.framework; path = "IRC Kit/build/Debug-appletvos/IRCKit.framework"; sourceTree = "<group>"; };
+		17E937D41E08A1C80054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
 		24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diamond_Club.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F124CDB76769F213142663 /* Pods-Diamond Club.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diamond Club.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diamond Club/Pods-Diamond Club.release.xcconfig"; sourceTree = "<group>"; };
 		92DEC9777600303DB24F36D4 /* Pods-Diamond Club.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diamond Club.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diamond Club/Pods-Diamond Club.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 				17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */,
 				172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */,
 				17D94DDA1DFCA72700509487 /* DiamondClub.swift */,
-				1719F4031DFE373200E8C94D /* IRC.swift */,
 				173517121E04D689005219E0 /* NSNumber+UIPressType.swift */,
 				17D94DCA1DFC9EE300509487 /* Main.storyboard */,
 				17D94DCD1DFC9EE300509487 /* Assets.xcassets */,
@@ -102,6 +101,8 @@
 		17D94DD51DFCA13700509487 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17E937D31E08A1C80054CB3E /* IRCKit.framework */,
+				17E937D41E08A1C80054CB3E /* ScheduleKit.framework */,
 				17E937BA1E089C290054CB3E /* ScheduleKit.framework */,
 				17D94DD61DFCA13700509487 /* AVFoundation.framework */,
 				17D94DD71DFCA13700509487 /* AVKit.framework */,
@@ -248,7 +249,6 @@
 				173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */,
 				17D94DC91DFC9EE300509487 /* ViewController.swift in Sources */,
 				173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */,
-				1719F4041DFE373200E8C94D /* IRC.swift in Sources */,
 				17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */,
 				173517131E04D689005219E0 /* NSNumber+UIPressType.swift in Sources */,
 				17D94DC71DFC9EE300509487 /* AppDelegate.swift in Sources */,

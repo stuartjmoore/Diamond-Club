@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "17E937A61E08981C0054CB3E"
-               BuildableName = "ScheduleKit.framework"
-               BlueprintName = "Schedule Kit"
-               ReferencedContainer = "container:Schedule Kit.xcodeproj">
+               BlueprintIdentifier = "17E937C51E08A01B0054CB3E"
+               BuildableName = "IRCKit.framework"
+               BlueprintName = "IRC Kit"
+               ReferencedContainer = "container:IRC Kit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "17E937A61E08981C0054CB3E"
-            BuildableName = "ScheduleKit.framework"
-            BlueprintName = "Schedule Kit"
-            ReferencedContainer = "container:Schedule Kit.xcodeproj">
+            BlueprintIdentifier = "17E937C51E08A01B0054CB3E"
+            BuildableName = "IRCKit.framework"
+            BlueprintName = "IRC Kit"
+            ReferencedContainer = "container:IRC Kit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "17E937A61E08981C0054CB3E"
-            BuildableName = "ScheduleKit.framework"
-            BlueprintName = "Schedule Kit"
-            ReferencedContainer = "container:Schedule Kit.xcodeproj">
+            BlueprintIdentifier = "17E937C51E08A01B0054CB3E"
+            BuildableName = "IRCKit.framework"
+            BlueprintName = "IRC Kit"
+            ReferencedContainer = "container:IRC Kit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

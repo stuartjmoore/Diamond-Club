@@ -8,6 +8,9 @@
       location = "group:Schedule Kit/Schedule Kit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:IRC Kit/IRC Kit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

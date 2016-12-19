@@ -59,6 +59,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17B883161E08A7B300E22F26 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17D94DC81DFC9EE300509487 /* ViewController.swift */,
+				173517141E04DE80005219E0 /* ChannelGuideViewController.swift */,
+				173517161E04DE92005219E0 /* ChatRealmViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		17B883171E08A7BB00E22F26 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */,
+				172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		17B883181E08A7C500E22F26 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				173517121E04D689005219E0 /* NSNumber+UIPressType.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		17B883191E08A7CF00E22F26 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				17D94DC61DFC9EE300509487 /* AppDelegate.swift */,
+				17D94DCA1DFC9EE300509487 /* Main.storyboard */,
+				17D94DCD1DFC9EE300509487 /* Assets.xcassets */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
 		17D94DBA1DFC9EE300509487 = {
 			isa = PBXGroup;
 			children = (
@@ -80,15 +117,10 @@
 		17D94DC51DFC9EE300509487 /* Diamond Club */ = {
 			isa = PBXGroup;
 			children = (
-				17D94DC61DFC9EE300509487 /* AppDelegate.swift */,
-				17D94DC81DFC9EE300509487 /* ViewController.swift */,
-				173517141E04DE80005219E0 /* ChannelGuideViewController.swift */,
-				173517161E04DE92005219E0 /* ChatRealmViewController.swift */,
-				17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */,
-				172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */,
-				173517121E04D689005219E0 /* NSNumber+UIPressType.swift */,
-				17D94DCA1DFC9EE300509487 /* Main.storyboard */,
-				17D94DCD1DFC9EE300509487 /* Assets.xcassets */,
+				17B883191E08A7CF00E22F26 /* Application */,
+				17B883161E08A7B300E22F26 /* View Controllers */,
+				17B883171E08A7BB00E22F26 /* Cells */,
+				17B883181E08A7C500E22F26 /* Extensions */,
 				17D94DCF1DFC9EE300509487 /* Info.plist */,
 				173517201E05DC0B005219E0 /* Keys.plist */,
 			);

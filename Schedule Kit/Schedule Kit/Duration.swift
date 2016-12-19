@@ -8,23 +8,23 @@
 
 import Foundation
 
-struct Duration {
+public struct Duration {
 
     let hours: Int
     let minutes: Int
     let seconds: Int
 
-    var timeInterval: TimeInterval {
+    public var timeInterval: TimeInterval {
         return TimeInterval(hours * 60 * 60 + minutes * 60 + seconds)
     }
 
-    init(hours: Int, minutes: Int, seconds: Int) {
+    public init(hours: Int, minutes: Int, seconds: Int) {
         self.hours = hours
         self.minutes = minutes
         self.seconds = seconds
     }
 
-    init(fromDate: Date, toDate: Date) {
+    public init(fromDate: Date, toDate: Date) {
         let components = Calendar.current.dateComponents([.hour, .minute, .second], from: fromDate, to: toDate)
         self.init(hours: components.hour ?? 0, minutes: components.minute ?? 0, seconds: components.second ?? 0)
     }
@@ -33,7 +33,7 @@ struct Duration {
 
 extension Duration: CustomStringConvertible {
 
-    var description: String {
+    public var description: String {
         let formatter = NumberFormatter()
         formatter.minimumIntegerDigits = 2
 
@@ -46,15 +46,15 @@ extension Duration: CustomStringConvertible {
 }
 
 extension Duration: Hashable, Equatable, Comparable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return timeInterval.hashValue
     }
 }
 
-func ==(lhs: Duration, rhs: Duration) -> Bool {
+public func ==(lhs: Duration, rhs: Duration) -> Bool {
     return lhs.timeInterval == rhs.timeInterval
 }
 
-func <(lhs: Duration, rhs: Duration) -> Bool {
+public func <(lhs: Duration, rhs: Duration) -> Bool {
     return lhs.timeInterval < rhs.timeInterval
 }

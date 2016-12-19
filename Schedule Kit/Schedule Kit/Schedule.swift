@@ -10,7 +10,7 @@ import Foundation
 
 private let calendarId = "a5jeb9t5etasrbl6dt5htkv4to%40group.calendar.google.com"
 
-class ScheduleClient {
+public class ScheduleClient {
 
     fileprivate static let session: URLSession = {
         let configuration = URLSessionConfiguration.ephemeral
@@ -25,14 +25,18 @@ class ScheduleClient {
         return formatter
     }()
 
-    func week(_ completion: @escaping (([[Event]]) -> Void)) {
+    public init() {
+        //
+    }
+
+    public func week(_ completion: @escaping (([[Event]]) -> Void)) {
         let startDate = Date() // .startOfPreviousDay
         let endDate = startDate.endOfWeek
 
         eventsStartingFromDate(startDate, toDate: endDate, completion: completion)
     }
 
-    func nextEpisode(_ completion: @escaping (([Event]) -> Void)) {
+    public func nextEpisode(_ completion: @escaping (([Event]) -> Void)) {
         eventsStartingFromDate(Date(), count: 2) { (scheduled) in
             completion(scheduled.flatMap({ $0 }))
         }

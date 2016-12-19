@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScheduleKit
 
 protocol ChannelGuideViewControllerDelegate: class {
     func updatePlayerItem(playing: URL)

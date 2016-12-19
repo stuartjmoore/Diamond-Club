@@ -12,10 +12,6 @@
 		173517131E04D689005219E0 /* NSNumber+UIPressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517121E04D689005219E0 /* NSNumber+UIPressType.swift */; };
 		173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517141E04DE80005219E0 /* ChannelGuideViewController.swift */; };
 		173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517161E04DE92005219E0 /* ChatRealmViewController.swift */; };
-		173517191E05D935005219E0 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517181E05D935005219E0 /* Schedule.swift */; };
-		1735171B1E05D947005219E0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735171A1E05D947005219E0 /* Event.swift */; };
-		1735171D1E05D959005219E0 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735171C1E05D959005219E0 /* Duration.swift */; };
-		1735171F1E05D977005219E0 /* NSDate+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735171E1E05D977005219E0 /* NSDate+Calendar.swift */; };
 		173517211E05DC0B005219E0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173517201E05DC0B005219E0 /* Keys.plist */; };
 		17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */; };
 		17D94DC71DFC9EE300509487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC61DFC9EE300509487 /* AppDelegate.swift */; };
@@ -34,10 +30,6 @@
 		173517121E04D689005219E0 /* NSNumber+UIPressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+UIPressType.swift"; sourceTree = "<group>"; };
 		173517141E04DE80005219E0 /* ChannelGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelGuideViewController.swift; sourceTree = "<group>"; };
 		173517161E04DE92005219E0 /* ChatRealmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRealmViewController.swift; sourceTree = "<group>"; };
-		173517181E05D935005219E0 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
-		1735171A1E05D947005219E0 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		1735171C1E05D959005219E0 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
-		1735171E1E05D977005219E0 /* NSDate+Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Calendar.swift"; sourceTree = "<group>"; };
 		173517201E05DC0B005219E0 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		17D94DC31DFC9EE300509487 /* Diamond Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Diamond Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +41,7 @@
 		17D94DD61DFCA13700509487 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17D94DD71DFCA13700509487 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		17D94DDA1DFCA72700509487 /* DiamondClub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondClub.swift; sourceTree = "<group>"; };
+		17E937BA1E089C290054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
 		24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diamond_Club.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F124CDB76769F213142663 /* Pods-Diamond Club.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diamond Club.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diamond Club/Pods-Diamond Club.release.xcconfig"; sourceTree = "<group>"; };
 		92DEC9777600303DB24F36D4 /* Pods-Diamond Club.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diamond Club.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diamond Club/Pods-Diamond Club.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,10 +90,6 @@
 				172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */,
 				17D94DDA1DFCA72700509487 /* DiamondClub.swift */,
 				1719F4031DFE373200E8C94D /* IRC.swift */,
-				173517181E05D935005219E0 /* Schedule.swift */,
-				1735171A1E05D947005219E0 /* Event.swift */,
-				1735171C1E05D959005219E0 /* Duration.swift */,
-				1735171E1E05D977005219E0 /* NSDate+Calendar.swift */,
 				173517121E04D689005219E0 /* NSNumber+UIPressType.swift */,
 				17D94DCA1DFC9EE300509487 /* Main.storyboard */,
 				17D94DCD1DFC9EE300509487 /* Assets.xcassets */,
@@ -113,6 +102,7 @@
 		17D94DD51DFCA13700509487 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17E937BA1E089C290054CB3E /* ScheduleKit.framework */,
 				17D94DD61DFCA13700509487 /* AVFoundation.framework */,
 				17D94DD71DFCA13700509487 /* AVKit.framework */,
 				24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */,
@@ -254,17 +244,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				172E2ACF1E034DE6001497DA /* ChannelCollectionViewCell.swift in Sources */,
-				1735171B1E05D947005219E0 /* Event.swift in Sources */,
 				17D94DDB1DFCA72700509487 /* DiamondClub.swift in Sources */,
-				1735171D1E05D959005219E0 /* Duration.swift in Sources */,
 				173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */,
 				17D94DC91DFC9EE300509487 /* ViewController.swift in Sources */,
 				173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */,
 				1719F4041DFE373200E8C94D /* IRC.swift in Sources */,
 				17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */,
 				173517131E04D689005219E0 /* NSNumber+UIPressType.swift in Sources */,
-				173517191E05D935005219E0 /* Schedule.swift in Sources */,
-				1735171F1E05D977005219E0 /* NSDate+Calendar.swift in Sources */,
 				17D94DC71DFC9EE300509487 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +367,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 968599HPC6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Schedule\\ Kit/build/Debug-appletvos",
+				);
 				INFOPLIST_FILE = "Diamond Club/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stuartjmoore.Diamond-Club";
@@ -396,6 +386,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 968599HPC6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Schedule\\ Kit/build/Debug-appletvos",
+				);
 				INFOPLIST_FILE = "Diamond Club/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stuartjmoore.Diamond-Club";

@@ -8,15 +8,15 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
 
-    var timeString: String {
+    public var timeString: String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         return formatter.string(from: self)
     }
 
-    var dateString: String {
+    public var dateString: String {
         switch daysSeparatingToday {
         case -1:
             return "Yesterday"
@@ -30,12 +30,12 @@ extension Date {
         }
     }
 
-    var startOfDay: Date {
+    public var startOfDay: Date {
         let calendar = Calendar(identifier: .gregorian)
         return calendar.startOfDay(for: self)
     }
 
-    var startOfPreviousDay: Date {
+    public var startOfPreviousDay: Date {
         let calendar = Calendar(identifier: .gregorian)
         let components = DateComponents(day: -1)
 
@@ -45,7 +45,7 @@ extension Date {
         return previousDay ?? self
     }
 
-    var endOfWeek: Date {
+    public var endOfWeek: Date {
         let calendar = Calendar(identifier: .gregorian)
         let components = DateComponents(weekOfYear: 1, second: -1)
 
@@ -55,14 +55,14 @@ extension Date {
         return endOfWeek ?? self
     }
 
-    var daysSeparatingToday: Int {
+    public var daysSeparatingToday: Int {
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents([.day], from: Date().startOfDay, to: startOfDay)
 
         return components.day ?? 0
     }
 
-    func daysSeparatingDate(_ date: Date) -> Int {
+    public func daysSeparatingDate(_ date: Date) -> Int {
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents([.day], from: date.startOfDay, to: startOfDay)
 
@@ -73,7 +73,7 @@ extension Date {
 
 extension DateFormatter {
 
-    convenience init(dateFormat: String) {
+    public convenience init(dateFormat: String) {
         self.init()
         self.dateFormat = dateFormat
     }
@@ -82,12 +82,12 @@ extension DateFormatter {
 
 extension DateComponents {
 
-    init(day: Int) {
+    public init(day: Int) {
         self.init()
         self.day = day
     }
 
-    init(weekOfYear: Int, second: Int) {
+    public init(weekOfYear: Int, second: Int) {
         self.init()
         self.weekOfYear = weekOfYear
         self.second = second

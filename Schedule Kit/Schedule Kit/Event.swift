@@ -8,25 +8,25 @@
 
 import Foundation
 
-struct Event {
+public struct Event {
 
-    let id: String
-    let title: String
-    let airingDate: Date
-    let duration: Duration
+    public let id: String
+    public let title: String
+    public let airingDate: Date
+    public let duration: Duration
 
 }
 
 extension Event: Hashable, Equatable, Comparable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return id.hashValue
     }
 }
 
-func ==(lhs: Event, rhs: Event) -> Bool {
+public func ==(lhs: Event, rhs: Event) -> Bool {
     return lhs.id == rhs.id
 }
 
-func <(lhs: Event, rhs: Event) -> Bool {
+public func <(lhs: Event, rhs: Event) -> Bool {
     return lhs.airingDate < rhs.airingDate
 }

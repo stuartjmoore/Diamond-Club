@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		17E937AC1E08981C0054CB3E /* ScheduleKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 17E937AA1E08981C0054CB3E /* ScheduleKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17E937B51E08999D0054CB3E /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E937B21E08999D0054CB3E /* Duration.swift */; };
+		17E937B61E08999D0054CB3E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E937B31E08999D0054CB3E /* Event.swift */; };
+		17E937B71E08999D0054CB3E /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E937B41E08999D0054CB3E /* Schedule.swift */; };
+		17E937B91E0899B60054CB3E /* NSDate+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E937B81E0899B60054CB3E /* NSDate+Calendar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17E937A71E08981C0054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScheduleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E937AA1E08981C0054CB3E /* ScheduleKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleKit.h; sourceTree = "<group>"; };
 		17E937AB1E08981C0054CB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17E937B21E08999D0054CB3E /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		17E937B31E08999D0054CB3E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		17E937B41E08999D0054CB3E /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		17E937B81E0899B60054CB3E /* NSDate+Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Calendar.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,10 @@
 		17E937A91E08981C0054CB3E /* Schedule Kit */ = {
 			isa = PBXGroup;
 			children = (
+				17E937B41E08999D0054CB3E /* Schedule.swift */,
+				17E937B31E08999D0054CB3E /* Event.swift */,
+				17E937B21E08999D0054CB3E /* Duration.swift */,
+				17E937B81E0899B60054CB3E /* NSDate+Calendar.swift */,
 				17E937AA1E08981C0054CB3E /* ScheduleKit.h */,
 				17E937AB1E08981C0054CB3E /* Info.plist */,
 			);
@@ -96,6 +108,7 @@
 					17E937A61E08981C0054CB3E = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 968599HPC6;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E937B91E0899B60054CB3E /* NSDate+Calendar.swift in Sources */,
+				17E937B71E08999D0054CB3E /* Schedule.swift in Sources */,
+				17E937B61E08999D0054CB3E /* Event.swift in Sources */,
+				17E937B51E08999D0054CB3E /* Duration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +255,7 @@
 		17E937B01E08981C0054CB3E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 968599HPC6;
@@ -250,13 +268,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stuartjmoore.Schedule-Kit";
 				PRODUCT_NAME = ScheduleKit;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
 		17E937B11E08981C0054CB3E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 968599HPC6;
@@ -270,6 +291,7 @@
 				PRODUCT_NAME = ScheduleKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};

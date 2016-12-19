@@ -5,6 +5,9 @@
       location = "group:Diamond Club.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Schedule Kit/Schedule Kit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

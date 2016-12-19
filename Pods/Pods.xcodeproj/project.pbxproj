@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		036995C0801A3A48944E28B3398A00F4 /* Pods-Diamond Club-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 392390F2BE69AA77FEDA3606C585E384 /* Pods-Diamond Club-dummy.m */; };
+		CC855C5D67CC49DDCB810F8A4A00F8FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E184A7CBDD11C7A10659350AEDCE81F /* Foundation.framework */; };
+		E9367360743BEEE1D887D7B966DB659D /* Pods-Diamond Club-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF2D16FB5ACB714316F2D01FA3E34CF1 /* Pods-Diamond Club-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1BFDDC99847FDA2F2F5DBA454E1DF965 /* Pods_Diamond_Club.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Diamond_Club.framework; path = "Pods-Diamond Club.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C124223C2203D63D16D77DC8C1C582F /* Pods-Diamond Club.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Diamond Club.modulemap"; sourceTree = "<group>"; };
+		392390F2BE69AA77FEDA3606C585E384 /* Pods-Diamond Club-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Diamond Club-dummy.m"; sourceTree = "<group>"; };
+		526911C66A227AF7FCA2B8598F38FBBB /* Pods-Diamond Club-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Diamond Club-frameworks.sh"; sourceTree = "<group>"; };
+		585909C56EBA2F4AA5E1D0F9268FBC6B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E184A7CBDD11C7A10659350AEDCE81F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96E1B9F36BE3FAEF1A4EBE09C97B333D /* Pods-Diamond Club-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Diamond Club-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B8127F53A4CEF617C90BBC186A836EA3 /* Pods-Diamond Club-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Diamond Club-resources.sh"; sourceTree = "<group>"; };
+		E59FEA9A7064179D85F170D25014A03D /* Pods-Diamond Club-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Diamond Club-acknowledgements.plist"; sourceTree = "<group>"; };
+		EF2D16FB5ACB714316F2D01FA3E34CF1 /* Pods-Diamond Club-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Diamond Club-umbrella.h"; sourceTree = "<group>"; };
+		F23247A488711FC60FFEF92267A9C8C8 /* Pods-Diamond Club.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Diamond Club.release.xcconfig"; sourceTree = "<group>"; };
+		F2FC53D36073FDCBA032108CFA7ADD4D /* Pods-Diamond Club.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Diamond Club.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBA85F868287A9A6EEE0A6388A637EEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC855C5D67CC49DDCB810F8A4A00F8FE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BB99B8D4C7329D10E7E4451B0A72C15A /* Frameworks */,
+				C6DBECA949ED17304C0ECDA2DED141A4 /* Products */,
+				A883D433A04E2D4C8B8F10869950630F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A17BF777266A8BBFF0BA3AB10B4E92EC /* Pods-Diamond Club */ = {
+			isa = PBXGroup;
+			children = (
+				585909C56EBA2F4AA5E1D0F9268FBC6B /* Info.plist */,
+				1C124223C2203D63D16D77DC8C1C582F /* Pods-Diamond Club.modulemap */,
+				96E1B9F36BE3FAEF1A4EBE09C97B333D /* Pods-Diamond Club-acknowledgements.markdown */,
+				E59FEA9A7064179D85F170D25014A03D /* Pods-Diamond Club-acknowledgements.plist */,
+				392390F2BE69AA77FEDA3606C585E384 /* Pods-Diamond Club-dummy.m */,
+				526911C66A227AF7FCA2B8598F38FBBB /* Pods-Diamond Club-frameworks.sh */,
+				B8127F53A4CEF617C90BBC186A836EA3 /* Pods-Diamond Club-resources.sh */,
+				EF2D16FB5ACB714316F2D01FA3E34CF1 /* Pods-Diamond Club-umbrella.h */,
+				F2FC53D36073FDCBA032108CFA7ADD4D /* Pods-Diamond Club.debug.xcconfig */,
+				F23247A488711FC60FFEF92267A9C8C8 /* Pods-Diamond Club.release.xcconfig */,
+			);
+			name = "Pods-Diamond Club";
+			path = "Target Support Files/Pods-Diamond Club";
+			sourceTree = "<group>";
+		};
+		A883D433A04E2D4C8B8F10869950630F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A17BF777266A8BBFF0BA3AB10B4E92EC /* Pods-Diamond Club */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BB99B8D4C7329D10E7E4451B0A72C15A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDDF067583365F4DC4C3532BD6D66E2B /* tvOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6DBECA949ED17304C0ECDA2DED141A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BFDDC99847FDA2F2F5DBA454E1DF965 /* Pods_Diamond_Club.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDDF067583365F4DC4C3532BD6D66E2B /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				8E184A7CBDD11C7A10659350AEDCE81F /* Foundation.framework */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A799B16CC250C062BCF267100369278A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9367360743BEEE1D887D7B966DB659D /* Pods-Diamond Club-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9E1B5B25FD7AFF5DD7A06125F75A0087 /* Pods-Diamond Club */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5A3457DF2B9A34EA1B17CDF7896450F /* Build configuration list for PBXNativeTarget "Pods-Diamond Club" */;
+			buildPhases = (
+				F113D432911CAC52AEBE83FCAC0A58AA /* Sources */,
+				FBA85F868287A9A6EEE0A6388A637EEA /* Frameworks */,
+				A799B16CC250C062BCF267100369278A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Diamond Club";
+			productName = "Pods-Diamond Club";
+			productReference = 1BFDDC99847FDA2F2F5DBA454E1DF965 /* Pods_Diamond_Club.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = C6DBECA949ED17304C0ECDA2DED141A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9E1B5B25FD7AFF5DD7A06125F75A0087 /* Pods-Diamond Club */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F113D432911CAC52AEBE83FCAC0A58AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				036995C0801A3A48944E28B3398A00F4 /* Pods-Diamond Club-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		127B0553742519E23100E12F448D7B84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5BA1D3775826187337FB7D0F220E3ECE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		7AB905FB045DF31118B55A2EF082BF72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F23247A488711FC60FFEF92267A9C8C8 /* Pods-Diamond Club.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Diamond Club/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Diamond Club/Pods-Diamond Club.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Diamond_Club;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AB411954678D042E4FD31E6146BDB21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2FC53D36073FDCBA032108CFA7ADD4D /* Pods-Diamond Club.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Diamond Club/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Diamond Club/Pods-Diamond Club.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Diamond_Club;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BA1D3775826187337FB7D0F220E3ECE /* Debug */,
+				127B0553742519E23100E12F448D7B84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5A3457DF2B9A34EA1B17CDF7896450F /* Build configuration list for PBXNativeTarget "Pods-Diamond Club" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB411954678D042E4FD31E6146BDB21F /* Debug */,
+				7AB905FB045DF31118B55A2EF082BF72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

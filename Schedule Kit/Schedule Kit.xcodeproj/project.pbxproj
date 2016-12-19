@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17E937AC1E08981C0054CB3E /* Schedule Kit.h in Headers */ = {isa = PBXBuildFile; fileRef = 17E937AA1E08981C0054CB3E /* Schedule Kit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17E937AC1E08981C0054CB3E /* ScheduleKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 17E937AA1E08981C0054CB3E /* ScheduleKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		17E937A71E08981C0054CB3E /* Schedule Kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Schedule Kit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		17E937AA1E08981C0054CB3E /* Schedule Kit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Schedule Kit.h"; sourceTree = "<group>"; };
+		17E937A71E08981C0054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScheduleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17E937AA1E08981C0054CB3E /* ScheduleKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleKit.h; sourceTree = "<group>"; };
 		17E937AB1E08981C0054CB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,7 +38,7 @@
 		17E937A81E08981C0054CB3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17E937A71E08981C0054CB3E /* Schedule Kit.framework */,
+				17E937A71E08981C0054CB3E /* ScheduleKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,7 +46,7 @@
 		17E937A91E08981C0054CB3E /* Schedule Kit */ = {
 			isa = PBXGroup;
 			children = (
-				17E937AA1E08981C0054CB3E /* Schedule Kit.h */,
+				17E937AA1E08981C0054CB3E /* ScheduleKit.h */,
 				17E937AB1E08981C0054CB3E /* Info.plist */,
 			);
 			path = "Schedule Kit";
@@ -59,7 +59,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E937AC1E08981C0054CB3E /* Schedule Kit.h in Headers */,
+				17E937AC1E08981C0054CB3E /* ScheduleKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,7 @@
 			);
 			name = "Schedule Kit";
 			productName = "Schedule Kit";
-			productReference = 17E937A71E08981C0054CB3E /* Schedule Kit.framework */;
+			productReference = 17E937A71E08981C0054CB3E /* ScheduleKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -248,7 +248,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stuartjmoore.Schedule-Kit";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScheduleKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -267,7 +267,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stuartjmoore.Schedule-Kit";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScheduleKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

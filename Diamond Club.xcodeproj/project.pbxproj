@@ -14,7 +14,7 @@
 		173517211E05DC0B005219E0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173517201E05DC0B005219E0 /* Keys.plist */; };
 		17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */; };
 		17D94DC71DFC9EE300509487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC61DFC9EE300509487 /* AppDelegate.swift */; };
-		17D94DC91DFC9EE300509487 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC81DFC9EE300509487 /* ViewController.swift */; };
+		17D94DC91DFC9EE300509487 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC81DFC9EE300509487 /* PlayerViewController.swift */; };
 		17D94DCC1DFC9EE300509487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D94DCA1DFC9EE300509487 /* Main.storyboard */; };
 		17D94DCE1DFC9EE300509487 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D94DCD1DFC9EE300509487 /* Assets.xcassets */; };
 		17D94DD81DFCA13700509487 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D94DD61DFCA13700509487 /* AVFoundation.framework */; };
@@ -31,7 +31,7 @@
 		17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		17D94DC31DFC9EE300509487 /* Diamond Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Diamond Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D94DC61DFC9EE300509487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		17D94DC81DFC9EE300509487 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		17D94DC81DFC9EE300509487 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		17D94DCB1DFC9EE300509487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17D94DCD1DFC9EE300509487 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D94DCF1DFC9EE300509487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		17B883161E08A7B300E22F26 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				17D94DC81DFC9EE300509487 /* ViewController.swift */,
+				17D94DC81DFC9EE300509487 /* PlayerViewController.swift */,
 				173517141E04DE80005219E0 /* ChannelGuideViewController.swift */,
 				173517161E04DE92005219E0 /* ChatRealmViewController.swift */,
 			);
@@ -275,7 +275,7 @@
 			files = (
 				172E2ACF1E034DE6001497DA /* ChannelCollectionViewCell.swift in Sources */,
 				173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */,
-				17D94DC91DFC9EE300509487 /* ViewController.swift in Sources */,
+				17D94DC91DFC9EE300509487 /* PlayerViewController.swift in Sources */,
 				173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */,
 				17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */,
 				173517131E04D689005219E0 /* NSNumber+UIPressType.swift in Sources */,

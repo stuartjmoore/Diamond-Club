@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PlayerViewController.swift
 //  Diamond Club
 //
 //  Created by Stuart Moore on 12/10/16.
@@ -15,7 +15,7 @@ private var UITableViewContentSizeObservationContext = 1
 private let ChannelGuideViewControllerSegue = "ChannelGuideViewControllerSegue"
 private let ChatRealmViewControllerSegue = "ChatRealmViewControllerSegue"
 
-class ViewController: UIViewController {
+class PlayerViewController: UIViewController {
 
     fileprivate var playerItem: AVPlayerItem? {
         willSet {
@@ -176,7 +176,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: ChannelGuideViewControllerDelegate {
+extension PlayerViewController: ChannelGuideViewControllerDelegate {
 
     func updatePlayerItem(playing url: URL) {
         player.replaceCurrentItem(with: nil)
@@ -194,7 +194,7 @@ extension ViewController: ChannelGuideViewControllerDelegate {
 
 }
 
-extension ViewController: UIGestureRecognizerDelegate {
+extension PlayerViewController: UIGestureRecognizerDelegate {
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer === topTapGesture || gestureRecognizer === bottomTapGesture

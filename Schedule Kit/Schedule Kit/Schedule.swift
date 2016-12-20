@@ -100,7 +100,7 @@ public class ScheduleClient {
                 return print("No schedule items.")
             }
 
-            var scheduled: [[Event]] = [[],[],[],[],[],[],[]]
+            var scheduled: [[Event]] = [[],[],[],[],[],[],[]] // TODO: fix this hack on Saturday
 
             for item in items {
                 guard let itemId = item["id"] as? String else {

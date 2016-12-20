@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17B883061E08A68300E22F26"
-               BuildableName = "Diamond Club Kit.framework"
+               BuildableName = "DiamondClubKit.framework"
                BlueprintName = "Diamond Club Kit"
                ReferencedContainer = "container:Diamond Club Kit.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17B883061E08A68300E22F26"
-            BuildableName = "Diamond Club Kit.framework"
+            BuildableName = "DiamondClubKit.framework"
             BlueprintName = "Diamond Club Kit"
             ReferencedContainer = "container:Diamond Club Kit.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17B883061E08A68300E22F26"
-            BuildableName = "Diamond Club Kit.framework"
+            BuildableName = "DiamondClubKit.framework"
             BlueprintName = "Diamond Club Kit"
             ReferencedContainer = "container:Diamond Club Kit.xcodeproj">
          </BuildableReference>

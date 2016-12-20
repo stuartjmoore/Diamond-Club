@@ -70,7 +70,9 @@ class ChannelGuideViewController: UIViewController {
                 let dateString = events.first?.airingDate.dateString ?? ""
 
                 return (title: dateString, items: events.map { (event) in
-                    return (time: event.airingDate.timeString, title: event.title)
+                    let titleAndChatRoom = event.title.components(separatedBy: " #")
+                    let title = titleAndChatRoom.first ?? event.title
+                    return (time: event.airingDate.timeString, title: title)
                 })
             })
         }

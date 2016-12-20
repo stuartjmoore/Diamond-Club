@@ -63,6 +63,8 @@ class ChannelGuideViewController: UIViewController {
             }
         }
 
+        // TODO: update schedule when the fisrt show ends
+
         ScheduleClient().week { (scheduled) in
             dump(scheduled)
 

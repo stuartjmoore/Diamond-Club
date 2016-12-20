@@ -121,8 +121,7 @@ public class ScheduleClient {
                         return print("No item schedule end date.")
                 }
 
-                let duration = Duration(fromDate: itemStartDate, toDate: itemEndDate)
-                let event = Event(id: itemId, title: itemTitle, airingDate: itemStartDate, duration: duration)
+                let event = Event(id: itemId, title: itemTitle, fromDate: itemStartDate, toDate: itemEndDate)
                 let sectionIndex = event.airingDate.daysSeparatingDate(startDate)
 
                 if sectionIndex >= scheduled.count {

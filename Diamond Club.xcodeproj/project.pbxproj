@@ -12,6 +12,12 @@
 		173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517141E04DE80005219E0 /* ChannelGuideViewController.swift */; };
 		173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173517161E04DE92005219E0 /* ChatRealmViewController.swift */; };
 		173517211E05DC0B005219E0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173517201E05DC0B005219E0 /* Keys.plist */; };
+		174B50161E09BC26007A578C /* ScheduleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174B50151E09BC26007A578C /* ScheduleKit.framework */; };
+		174B50171E09BC26007A578C /* ScheduleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 174B50151E09BC26007A578C /* ScheduleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		174B501A1E09BCA5007A578C /* DiamondClubKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174B50191E09BCA5007A578C /* DiamondClubKit.framework */; };
+		174B501B1E09BCA5007A578C /* DiamondClubKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 174B50191E09BCA5007A578C /* DiamondClubKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		174B501D1E09BCAB007A578C /* IRCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174B501C1E09BCAB007A578C /* IRCKit.framework */; };
+		174B501E1E09BCAB007A578C /* IRCKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 174B501C1E09BCAB007A578C /* IRCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */; };
 		17D94DC71DFC9EE300509487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC61DFC9EE300509487 /* AppDelegate.swift */; };
 		17D94DC91DFC9EE300509487 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC81DFC9EE300509487 /* PlayerViewController.swift */; };
@@ -22,12 +28,31 @@
 		FD3890CE1CFC0AAE31E8A7F5 /* Pods_Diamond_Club.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		174B50181E09BC26007A578C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				174B501B1E09BCA5007A578C /* DiamondClubKit.framework in Embed Frameworks */,
+				174B501E1E09BCAB007A578C /* IRCKit.framework in Embed Frameworks */,
+				174B50171E09BC26007A578C /* ScheduleKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCell.swift; sourceTree = "<group>"; };
 		173517121E04D689005219E0 /* NSNumber+UIPressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+UIPressType.swift"; sourceTree = "<group>"; };
 		173517141E04DE80005219E0 /* ChannelGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelGuideViewController.swift; sourceTree = "<group>"; };
 		173517161E04DE92005219E0 /* ChatRealmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRealmViewController.swift; sourceTree = "<group>"; };
 		173517201E05DC0B005219E0 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		174B50151E09BC26007A578C /* ScheduleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ScheduleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		174B50191E09BCA5007A578C /* DiamondClubKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiamondClubKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		174B501C1E09BCAB007A578C /* IRCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IRCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		17D94DC31DFC9EE300509487 /* Diamond Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Diamond Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D94DC61DFC9EE300509487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +62,6 @@
 		17D94DCF1DFC9EE300509487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D94DD61DFCA13700509487 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17D94DD71DFCA13700509487 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		17E937BA1E089C290054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
-		17E937D31E08A1C80054CB3E /* IRCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IRCKit.framework; path = "IRC Kit/build/Debug-appletvos/IRCKit.framework"; sourceTree = "<group>"; };
-		17E937D41E08A1C80054CB3E /* ScheduleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScheduleKit.framework; path = "Schedule Kit/build/Debug-appletvos/ScheduleKit.framework"; sourceTree = "<group>"; };
 		24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diamond_Club.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F124CDB76769F213142663 /* Pods-Diamond Club.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diamond Club.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diamond Club/Pods-Diamond Club.release.xcconfig"; sourceTree = "<group>"; };
 		92DEC9777600303DB24F36D4 /* Pods-Diamond Club.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diamond Club.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diamond Club/Pods-Diamond Club.debug.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +74,9 @@
 			files = (
 				17D94DD81DFCA13700509487 /* AVFoundation.framework in Frameworks */,
 				17D94DD91DFCA13700509487 /* AVKit.framework in Frameworks */,
+				174B50161E09BC26007A578C /* ScheduleKit.framework in Frameworks */,
+				174B501A1E09BCA5007A578C /* DiamondClubKit.framework in Frameworks */,
+				174B501D1E09BCAB007A578C /* IRCKit.framework in Frameworks */,
 				FD3890CE1CFC0AAE31E8A7F5 /* Pods_Diamond_Club.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,12 +155,12 @@
 		17D94DD51DFCA13700509487 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				17E937D31E08A1C80054CB3E /* IRCKit.framework */,
-				17E937D41E08A1C80054CB3E /* ScheduleKit.framework */,
-				17E937BA1E089C290054CB3E /* ScheduleKit.framework */,
+				174B501C1E09BCAB007A578C /* IRCKit.framework */,
+				174B50151E09BC26007A578C /* ScheduleKit.framework */,
+				174B50191E09BCA5007A578C /* DiamondClubKit.framework */,
+				24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */,
 				17D94DD61DFCA13700509487 /* AVFoundation.framework */,
 				17D94DD71DFCA13700509487 /* AVKit.framework */,
-				24AFBA83FA25B66FF097710D /* Pods_Diamond_Club.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +187,7 @@
 				17D94DC11DFC9EE300509487 /* Resources */,
 				11F95DDA7B65ACBA40F78428 /* [CP] Embed Pods Frameworks */,
 				D1DED6DAC6A506D7F2B6A3F4 /* [CP] Copy Pods Resources */,
+				174B50181E09BC26007A578C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

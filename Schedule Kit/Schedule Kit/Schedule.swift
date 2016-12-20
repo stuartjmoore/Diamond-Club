@@ -100,7 +100,7 @@ public class ScheduleClient {
                 return print("No schedule items.")
             }
 
-            var scheduled: [[Event]] = [[],[],[],[],[],[],[]] // TODO: fix this hack on Saturday
+            var scheduled: [[Event]] = []
 
             for item in items {
                 guard let itemId = item["id"] as? String else {
@@ -124,13 +124,13 @@ public class ScheduleClient {
                 let event = Event(id: itemId, title: itemTitle, fromDate: itemStartDate, toDate: itemEndDate)
                 let sectionIndex = event.airingDate.daysSeparatingDate(startDate)
 
+                scheduled += Array(repeating: [], count: max(0, sectionIndex - scheduled.count))
+
                 if sectionIndex >= scheduled.count {
                     scheduled.append([event])
                 } else {
                     scheduled[sectionIndex].append(event)
                 }
-
-                dump(scheduled)
             }
             
             DispatchQueue.main.async {

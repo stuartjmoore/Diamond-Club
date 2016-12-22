@@ -38,6 +38,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet private var showChatContraint: NSLayoutConstraint!
     @IBOutlet private var hideChatContraint: NSLayoutConstraint!
     fileprivate var chatRealmViewController: ChatRealmViewController!
+    @IBOutlet fileprivate var chatRealmViewContainer: UIView!
 
     fileprivate let topTapGesture = UITapGestureRecognizer()
     fileprivate let bottomTapGesture = UITapGestureRecognizer()
@@ -82,6 +83,8 @@ class PlayerViewController: UIViewController {
         bottomTapGesture.allowedPressTypes = [.downArrow]
         bottomTapGesture.delegate = self
         playerViewController.view.addGestureRecognizer(bottomTapGesture)
+
+        playerViewController.contentOverlayView?.addSubview(chatRealmViewContainer)
     }
 
     // MARK: - Touches

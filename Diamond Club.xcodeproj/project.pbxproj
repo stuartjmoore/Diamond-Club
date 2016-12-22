@@ -18,6 +18,8 @@
 		174B501B1E09BCA5007A578C /* DiamondClubKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 174B50191E09BCA5007A578C /* DiamondClubKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		174B501D1E09BCAB007A578C /* IRCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174B501C1E09BCAB007A578C /* IRCKit.framework */; };
 		174B501E1E09BCAB007A578C /* IRCKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 174B501C1E09BCAB007A578C /* IRCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		174B50201E0C75AC007A578C /* ShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B501F1E0C75AC007A578C /* ShadowLabel.swift */; };
+		174B50221E0C822D007A578C /* UIView+Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174B50211E0C822D007A578C /* UIView+Find.swift */; };
 		17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */; };
 		17D94DC71DFC9EE300509487 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC61DFC9EE300509487 /* AppDelegate.swift */; };
 		17D94DC91DFC9EE300509487 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D94DC81DFC9EE300509487 /* PlayerViewController.swift */; };
@@ -53,6 +55,8 @@
 		174B50151E09BC26007A578C /* ScheduleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ScheduleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		174B50191E09BCA5007A578C /* DiamondClubKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiamondClubKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		174B501C1E09BCAB007A578C /* IRCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IRCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		174B501F1E0C75AC007A578C /* ShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLabel.swift; sourceTree = "<group>"; };
+		174B50211E0C822D007A578C /* UIView+Find.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Find.swift"; sourceTree = "<group>"; };
 		17830D741E00BFD200F71D8F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		17D94DC31DFC9EE300509487 /* Diamond Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Diamond Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D94DC61DFC9EE300509487 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				173517121E04D689005219E0 /* NSNumber+UIPressType.swift */,
+				174B50211E0C822D007A578C /* UIView+Find.swift */,
+				174B501F1E0C75AC007A578C /* ShadowLabel.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -301,6 +307,8 @@
 			files = (
 				172E2ACF1E034DE6001497DA /* ChannelCollectionViewCell.swift in Sources */,
 				173517151E04DE80005219E0 /* ChannelGuideViewController.swift in Sources */,
+				174B50201E0C75AC007A578C /* ShadowLabel.swift in Sources */,
+				174B50221E0C822D007A578C /* UIView+Find.swift in Sources */,
 				17D94DC91DFC9EE300509487 /* PlayerViewController.swift in Sources */,
 				173517171E04DE92005219E0 /* ChatRealmViewController.swift in Sources */,
 				17830D751E00BFD200F71D8F /* MessageTableViewCell.swift in Sources */,

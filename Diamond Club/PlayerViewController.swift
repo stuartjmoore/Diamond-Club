@@ -89,6 +89,18 @@ class PlayerViewController: UIViewController {
         playerViewController.view.addGestureRecognizer(bottomTapGesture)
 
         playerViewController.contentOverlayView?.addSubview(chatRealmViewContainer)
+
+        let infoHintView = playerViewController.view.findView(is: "AVNowPlayingInfoHintView")
+        dump(infoHintView)
+
+        let dimmingView = playerViewController.view.findView(is: "AVNowPlayingDimmingView")
+        dump(dimmingView)
+
+        /*
+        AVNowPlayingInfoHintView
+        AVNowPlayingTransportBar
+         AVNowPlayingDimmingView
+        */
     }
 
     // MARK: - Touches

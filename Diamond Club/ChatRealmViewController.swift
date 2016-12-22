@@ -27,7 +27,7 @@ class ChatRealmViewController: UIViewController {
         tableView.mask = nil
 
         chatRealm.delegate = self
-        chatRealm.start()
+        //chatRealm.start()
     }
 
     // MARK: - KVO

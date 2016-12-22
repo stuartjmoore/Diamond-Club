@@ -32,11 +32,15 @@ class PlayerViewController: UIViewController {
 
     @IBOutlet private var showChannelsContraint: NSLayoutConstraint!
     @IBOutlet private var hideChannelsContraint: NSLayoutConstraint!
+    @IBOutlet private var coachChannelContraint: NSLayoutConstraint!
+    @IBOutlet private var channelArrowImageView: UIImageView!
     fileprivate var channelGuideViewController: ChannelGuideViewController!
     @IBOutlet fileprivate var channelBlackView: UIView!
 
     @IBOutlet private var showChatContraint: NSLayoutConstraint!
     @IBOutlet private var hideChatContraint: NSLayoutConstraint!
+    @IBOutlet private var coachChatContraint: NSLayoutConstraint!
+    @IBOutlet private var chatArrowImageView: UIImageView!
     fileprivate var chatRealmViewController: ChatRealmViewController!
     @IBOutlet fileprivate var chatRealmViewContainer: UIView!
 
@@ -95,21 +99,24 @@ class PlayerViewController: UIViewController {
 
     func handleBottomTapGesture(_ gesture: UITapGestureRecognizer) {
         let animator: UIViewPropertyAnimator
+        let curve: UIViewAnimationCurve
 
         if showChatContraint.isActive {
             NSLayoutConstraint.deactivate([showChatContraint])
             NSLayoutConstraint.activate([hideChatContraint])
-
-            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
-                self.view.layoutIfNeeded()
-            }
+            chatArrowImageView.image = #imageLiteral(resourceName: "swipe-up-icon")
+            coachChatContraint.constant = 140
+            curve = .easeIn
         } else {
             NSLayoutConstraint.activate([showChatContraint])
             NSLayoutConstraint.deactivate([hideChatContraint])
+            chatArrowImageView.image = #imageLiteral(resourceName: "swipe-down-icon")
+            coachChatContraint.constant = 28
+            curve = .easeOut
+        }
 
-            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) {
-                self.view.layoutIfNeeded()
-            }
+        animator = UIViewPropertyAnimator(duration: 0.3, curve: curve) {
+            self.view.layoutIfNeeded()
         }
 
         animator.startAnimation()
@@ -117,23 +124,25 @@ class PlayerViewController: UIViewController {
 
     fileprivate func toggleChannelGuide(display: Bool, completion: (() -> Void)? = nil) {
         let animator: UIViewPropertyAnimator
+        let curve: UIViewAnimationCurve
 
         if display {
             NSLayoutConstraint.activate([showChannelsContraint])
             NSLayoutConstraint.deactivate([hideChannelsContraint])
-
-            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) {
-                self.channelBlackView.alpha = 1
-                self.view.layoutIfNeeded()
-            }
+            channelArrowImageView.image = #imageLiteral(resourceName: "swipe-up-icon")
+            coachChannelContraint.constant = 28
+            curve = .easeOut
         } else {
             NSLayoutConstraint.deactivate([showChannelsContraint])
             NSLayoutConstraint.activate([hideChannelsContraint])
+            channelArrowImageView.image = #imageLiteral(resourceName: "swipe-down-icon")
+            coachChannelContraint.constant = 140
+            curve = .easeIn
+        }
 
-            animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
-                self.channelBlackView.alpha = 0
-                self.view.layoutIfNeeded()
-            }
+        animator = UIViewPropertyAnimator(duration: 0.3, curve: curve) {
+            self.channelBlackView.alpha = display ? 1 : 0
+            self.view.layoutIfNeeded()
         }
 
         animator.addCompletion { _ in

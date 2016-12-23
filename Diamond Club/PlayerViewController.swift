@@ -11,6 +11,8 @@ import AVKit
 
 private var AVPlayerItemStatusObservationContext = 0
 private var UITableViewContentSizeObservationContext = 1
+private var AVNowPlayingInfoHintViewObservationContext = 2
+private var AVNowPlayingDimmingViewObservationContext = 3
 
 private let ChannelGuideViewControllerSegue = "ChannelGuideViewControllerSegue"
 private let ChatRealmViewControllerSegue = "ChatRealmViewControllerSegue"
@@ -27,6 +29,8 @@ class PlayerViewController: UIViewController {
 
     fileprivate let player = AVPlayer()
     fileprivate let playerViewController = AVPlayerViewController()
+    private var playerInfoHintView: UIView?
+    private var playerDimmingView: UIView?
 
     @IBOutlet fileprivate var notBroadcastingLabel: UILabel!
 
@@ -34,6 +38,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet private var hideChannelsContraint: NSLayoutConstraint!
     @IBOutlet private var coachChannelContraint: NSLayoutConstraint!
     @IBOutlet private var channelArrowImageView: UIImageView!
+    @IBOutlet private var channelCoachLabel: UILabel!
     fileprivate var channelGuideViewController: ChannelGuideViewController!
     @IBOutlet fileprivate var channelBlackView: UIView!
 
@@ -41,6 +46,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet private var hideChatContraint: NSLayoutConstraint!
     @IBOutlet private var coachChatContraint: NSLayoutConstraint!
     @IBOutlet private var chatArrowImageView: UIImageView!
+    @IBOutlet private var chatCoachLabel: UILabel!
     fileprivate var chatRealmViewController: ChatRealmViewController!
     @IBOutlet fileprivate var chatRealmViewContainer: UIView!
 
@@ -89,18 +95,14 @@ class PlayerViewController: UIViewController {
         playerViewController.view.addGestureRecognizer(bottomTapGesture)
 
         playerViewController.contentOverlayView?.addSubview(chatRealmViewContainer)
+        playerViewController.contentOverlayView?.addSubview(chatCoachLabel)
+        playerViewController.contentOverlayView?.addSubview(chatArrowImageView)
 
-        let infoHintView = playerViewController.view.findView(is: "AVNowPlayingInfoHintView")
-        dump(infoHintView)
+        playerInfoHintView = playerViewController.view.findView(is: "AVNowPlayingInfoHintView")
+        playerInfoHintView?.addObserver(self, forKeyPath: #keyPath(UIView.alpha), options: [.initial, .new], context: &AVNowPlayingInfoHintViewObservationContext)
 
-        let dimmingView = playerViewController.view.findView(is: "AVNowPlayingDimmingView")
-        dump(dimmingView)
-
-        /*
-        AVNowPlayingInfoHintView
-        AVNowPlayingTransportBar
-         AVNowPlayingDimmingView
-        */
+        playerDimmingView = playerViewController.view.findView(is: "AVNowPlayingDimmingView")
+        playerDimmingView?.addObserver(self, forKeyPath: #keyPath(UIView.alpha), options: [.initial, .new], context: &AVNowPlayingDimmingViewObservationContext)
     }
 
     // MARK: - Touches
@@ -117,7 +119,7 @@ class PlayerViewController: UIViewController {
             NSLayoutConstraint.deactivate([showChatContraint])
             NSLayoutConstraint.activate([hideChatContraint])
             chatArrowImageView.image = #imageLiteral(resourceName: "swipe-up-icon")
-            coachChatContraint.constant = 140
+            coachChatContraint.constant = 160
             curve = .easeIn
         } else {
             NSLayoutConstraint.activate([showChatContraint])
@@ -148,7 +150,7 @@ class PlayerViewController: UIViewController {
             NSLayoutConstraint.deactivate([showChannelsContraint])
             NSLayoutConstraint.activate([hideChannelsContraint])
             channelArrowImageView.image = #imageLiteral(resourceName: "swipe-down-icon")
-            coachChannelContraint.constant = 140
+            coachChannelContraint.constant = 58
             curve = .easeIn
         }
 
@@ -186,6 +188,14 @@ class PlayerViewController: UIViewController {
 
                 fadeOutAnimator.startAnimation()
             }
+        } else if context == &AVNowPlayingInfoHintViewObservationContext, let alpha = change?[.newKey] as? CGFloat {
+            channelArrowImageView.alpha = abs(alpha - 1)
+            channelCoachLabel.alpha = abs(alpha - 1)
+        } else if context == &AVNowPlayingDimmingViewObservationContext, let alpha = change?[.newKey] as? CGFloat {
+            channelArrowImageView.alpha = playerInfoHintView?.alpha == 1 ? 0 : alpha
+            channelCoachLabel.alpha = playerInfoHintView?.alpha == 1 ? 0 : alpha
+            chatArrowImageView.alpha = alpha
+            chatCoachLabel.alpha = alpha
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

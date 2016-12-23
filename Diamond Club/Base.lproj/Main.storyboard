@@ -173,10 +173,10 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe-up-icon" translatesAutoresizingMaskIntoConstraints="NO" id="IW2-jZ-TjZ">
-                                <rect key="frame" x="922" y="885" width="75" height="37"/>
+                                <rect key="frame" x="922" y="865" width="75" height="37"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Down to Show The Chat Realm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-8g-9Qx" customClass="ShadowLabel" customModule="Diamond_Club" customModuleProvider="target">
-                                <rect key="frame" x="777" y="918" width="366" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Down for the Chat Realm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-8g-9Qx" customClass="ShadowLabel" customModule="Diamond_Club" customModuleProvider="target">
+                                <rect key="frame" x="808" y="898" width="304" height="28"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -230,20 +230,20 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Up to Show The Channel Guide" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f09-8g-3PA" customClass="ShadowLabel" customModule="Diamond_Club" customModuleProvider="target">
-                                <rect key="frame" x="775" y="140" width="370" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Up for the Channel Guide" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f09-8g-3PA" customClass="ShadowLabel" customModule="Diamond_Club" customModuleProvider="target">
+                                <rect key="frame" x="806" y="58" width="308" height="28"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe-down-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3RM-tC-5Fp">
-                                <rect key="frame" x="922" y="161" width="75" height="37"/>
+                                <rect key="frame" x="922" y="79" width="75" height="37"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xrC-8t-j4D" firstAttribute="top" secondItem="2VS-8g-9Qx" secondAttribute="baseline" constant="140" id="0ko-kd-z9W"/>
+                            <constraint firstItem="xrC-8t-j4D" firstAttribute="top" secondItem="2VS-8g-9Qx" secondAttribute="baseline" constant="160" id="0ko-kd-z9W"/>
                             <constraint firstAttribute="trailing" secondItem="xrC-8t-j4D" secondAttribute="trailing" id="1EM-Pa-md0"/>
                             <constraint firstItem="PtP-88-ACn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3uv-gU-AUQ"/>
                             <constraint firstItem="3RM-tC-5Fp" firstAttribute="centerX" secondItem="f09-8g-3PA" secondAttribute="centerX" id="4v0-pe-ucj"/>
@@ -266,7 +266,7 @@
                             <constraint firstItem="z6t-O8-Ctd" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="neZ-IM-tAV"/>
                             <constraint firstItem="jg3-ks-BXH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="u0h-7e-Jok"/>
                             <constraint firstItem="jg3-ks-BXH" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vet-01-Uiv"/>
-                            <constraint firstItem="f09-8g-3PA" firstAttribute="top" secondItem="jg3-ks-BXH" secondAttribute="bottom" constant="140" id="yo6-A8-rPx"/>
+                            <constraint firstItem="f09-8g-3PA" firstAttribute="top" secondItem="jg3-ks-BXH" secondAttribute="bottom" constant="58" id="yo6-A8-rPx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -278,7 +278,9 @@
                     <connections>
                         <outlet property="channelArrowImageView" destination="3RM-tC-5Fp" id="CAG-an-s0F"/>
                         <outlet property="channelBlackView" destination="z6t-O8-Ctd" id="D7x-sz-cS3"/>
+                        <outlet property="channelCoachLabel" destination="f09-8g-3PA" id="1jH-C3-jkV"/>
                         <outlet property="chatArrowImageView" destination="IW2-jZ-TjZ" id="l4c-Ej-bdW"/>
+                        <outlet property="chatCoachLabel" destination="2VS-8g-9Qx" id="pSf-AI-Tec"/>
                         <outlet property="chatRealmViewContainer" destination="xrC-8t-j4D" id="XmC-z8-VTc"/>
                         <outlet property="coachChannelContraint" destination="yo6-A8-rPx" id="eck-9k-jas"/>
                         <outlet property="coachChatContraint" destination="0ko-kd-z9W" id="XWG-Hv-9Cp"/>

@@ -74,7 +74,7 @@ class ChannelGuideViewController: UIViewController {
     func updateSchedule(_ timer: Timer? = nil) {
         timer?.invalidate()
 
-        ScheduleClient().week { [weak self] (scheduled) in
+        ScheduleClient.fromNow { [weak self] (scheduled) in
             dump(scheduled)
 
             guard let `self` = self else { return }

@@ -10,39 +10,35 @@ import Foundation
 
 private let calendarId = "a5jeb9t5etasrbl6dt5htkv4to%40group.calendar.google.com"
 
+private let ScheduleSession: URLSession = {
+    let configuration: URLSessionConfiguration = .ephemeral
+    configuration.httpMaximumConnectionsPerHost = 1
+    return URLSession(configuration: configuration)
+}()
+
+private let RFC3339DateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    formatter.timeZone = TimeZone(identifier: "America/New_York")
+    return formatter
+}()
+
 public class ScheduleClient {
 
-    fileprivate static let session: URLSession = {
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.httpMaximumConnectionsPerHost = 1
-        return URLSession(configuration: configuration)
-    }()
-
-    fileprivate let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // RFC3339
-        formatter.timeZone = TimeZone(identifier: "America/New_York")
-        return formatter
-    }()
-
-    public init() {
-        //
-    }
-
-    public func week(_ completion: @escaping (([[Event]]) -> Void)) {
-        let startDate = Date() // .startOfPreviousDay
+    public static func fromNow(_ completion: @escaping (([[Event]]) -> Void)) {
+        let startDate = Date()
         let endDate = startDate.endOfWeek
 
-        eventsStartingFromDate(startDate, toDate: endDate, completion: completion)
+        events(startDate: startDate, toDate: endDate, completion: completion)
     }
 
-    public func nextEpisode(_ completion: @escaping (([Event]) -> Void)) {
-        eventsStartingFromDate(Date(), count: 2) { (scheduled) in
+    public static func nextEpisode(_ completion: @escaping (([Event]) -> Void)) {
+        events(startDate: Date(), count: 2) { (scheduled) in
             completion(scheduled.flatMap({ $0 }))
         }
     }
 
-    fileprivate func eventsStartingFromDate(_ startDate: Date, toDate endDate: Date? = nil, count: Int? = nil, completion: @escaping (([[Event]]) -> Void)) {
+    fileprivate static func events(startDate: Date, toDate endDate: Date? = nil, count: Int? = nil, completion: @escaping (([[Event]]) -> Void)) {
         guard let keysFilepath = Bundle.main.path(forResource: "Keys", ofType:"plist"),
               let allKeys = NSDictionary(contentsOfFile: keysFilepath) as? [String:AnyObject],
               let keys = allKeys["Google"] as? [String:String],
@@ -51,7 +47,7 @@ public class ScheduleClient {
         }
 
         var components = URLComponents(string: "https://www.googleapis.com/calendar/v3/calendars/\(calendarId)/events")
-        let timeMin = dateFormatter.string(from: startDate)
+        let timeMin = RFC3339DateFormatter.string(from: startDate)
 
         components?.queryItems = [
             URLQueryItem(name: "alwaysIncludeEmail", value: "false"),
@@ -66,7 +62,7 @@ public class ScheduleClient {
         ]
 
         if let endDate = endDate {
-            let timeMax = dateFormatter.string(from: endDate)
+            let timeMax = RFC3339DateFormatter.string(from: endDate)
             components?.queryItems?.append(URLQueryItem(name: "timeMax", value: timeMax))
         }
 
@@ -78,12 +74,11 @@ public class ScheduleClient {
             return print("Unable to create URL.")
         }
 
-        let session = ScheduleClient.session
         var request = URLRequest(url: url)
         request.setValue(referer, forHTTPHeaderField: "Referer")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = ScheduleSession.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
                 return print(error ?? "error")
             }
@@ -112,12 +107,12 @@ public class ScheduleClient {
                 }
 
                 guard let itemStart = item["start"] as? [String: Any], let itemStartDateString = itemStart["dateTime"] as? String,
-                      let itemStartDate = self.dateFormatter.date(from: itemStartDateString) else {
+                      let itemStartDate = RFC3339DateFormatter.date(from: itemStartDateString) else {
                         return print("No item schedule start date.")
                 }
 
                 guard let itemEnd = item["end"] as? [String: Any], let itemEndDateString = itemEnd["dateTime"] as? String,
-                      let itemEndDate = self.dateFormatter.date(from: itemEndDateString) else {
+                      let itemEndDate = RFC3339DateFormatter.date(from: itemEndDateString) else {
                         return print("No item schedule end date.")
                 }
 

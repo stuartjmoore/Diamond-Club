@@ -30,10 +30,11 @@ class ChannelGuideViewController: UIViewController {
     @IBOutlet fileprivate(set) var tableView: UITableView!
 
     fileprivate(set) var currentNumber: Int?
-
-    fileprivate(set) var channels: [Channel]? {
+    fileprivate(set) var channels: [Channel] = [] {
         didSet {
-            collectionView?.reloadData()
+            if oldValue != channels {
+                collectionView?.reloadData()
+            }
         }
     }
 
@@ -54,20 +55,23 @@ class ChannelGuideViewController: UIViewController {
         tapGesture.allowedPressTypes = [.upArrow, .downArrow, .menu]
         collectionView.addGestureRecognizer(tapGesture)
 
-        DiamondClub.getLiveChannels() { (channels) in
+        updateChannels()
+        updateSchedule()
+    }
+
+    func updateChannels() {
+        DiamondClub.getLiveChannels { (channels) in
             self.channels = channels
 
-            if let channelIndex = (channels.count > 0 ? 0 : nil) {
+            if self.currentNumber == nil, let channelIndex = (channels.count > 0 ? 0 : nil) {
                 let url = DiamondClub.streamURL(for: channels[channelIndex].number)
                 self.currentNumber = channels[channelIndex].number
                 self.delegate?.updatePlayerItem(playing: url)
             }
         }
-
-        updateSchedule(nil)
     }
 
-    func updateSchedule(_ timer: Timer?) {
+    func updateSchedule(_ timer: Timer? = nil) {
         timer?.invalidate()
 
         ScheduleClient().week { [weak self] (scheduled) in
@@ -109,13 +113,13 @@ class ChannelGuideViewController: UIViewController {
 extension ChannelGuideViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return channels?.count ?? 0
+        return channels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath) as! ChannelCollectionViewCell
 
-        guard let channels = channels, indexPath.row < channels.count else {
+        guard indexPath.row < channels.count else {
             return cell
         }
 
@@ -135,7 +139,7 @@ extension ChannelGuideViewController: UICollectionViewDataSource {
 extension ChannelGuideViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let channels = channels, indexPath.row < channels.count else {
+        guard indexPath.row < channels.count else {
             return
         }
 
@@ -153,7 +157,7 @@ extension ChannelGuideViewController: UICollectionViewDelegate {
     }
 
     func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
-        guard let index = channels?.index(where: { return $0.number == self.currentNumber }) else {
+        guard let index = channels.index(where: { return $0.number == self.currentNumber }) else {
             return nil
         }
 

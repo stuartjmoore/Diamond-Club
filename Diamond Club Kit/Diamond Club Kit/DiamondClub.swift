@@ -119,3 +119,11 @@ public struct Channel {
     public static let TwentyFourSeven = Channel(id: 0, number: 0, title: "24/7", imageURL: nil, description: nil, currentGame: nil)
 
 }
+
+extension Channel: Equatable {
+
+    public static func ==(lhs: Channel, rhs: Channel) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+}

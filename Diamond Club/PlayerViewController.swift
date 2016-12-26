@@ -141,6 +141,8 @@ class PlayerViewController: UIViewController {
         let curve: UIViewAnimationCurve
 
         if display {
+            channelGuideViewController.updateChannels()
+
             NSLayoutConstraint.activate([showChannelsContraint])
             NSLayoutConstraint.deactivate([hideChannelsContraint])
             channelArrowImageView.image = #imageLiteral(resourceName: "swipe-up-icon")

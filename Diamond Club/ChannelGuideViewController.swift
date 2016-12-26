@@ -37,6 +37,7 @@ class ChannelGuideViewController: UIViewController {
         }
     }
 
+    private var scheduleTimer: Timer?
     fileprivate var scheduleData: [(title: String, items: [(time: String, title: String)])] = [] {
         didSet {
             tableView?.reloadData()
@@ -63,25 +64,42 @@ class ChannelGuideViewController: UIViewController {
             }
         }
 
-        // TODO: update schedule when the fisrt show ends
+        updateSchedule(nil)
+    }
 
-        ScheduleClient().week { (scheduled) in
+    func updateSchedule(_ timer: Timer?) {
+        timer?.invalidate()
+
+        ScheduleClient().week { [weak self] (scheduled) in
             dump(scheduled)
 
-            self.scheduleData = scheduled.map({ (events) in
-                let dateString = events.first?.airingDate.dateString ?? ""
+            guard let `self` = self else { return }
+
+            self.scheduleData = scheduled.map { (events) in
+                let dateString = events.first?.airingDate.dateString ?? "Schedule"
 
                 return (title: dateString, items: events.map { (event) in
                     let titleAndChatRoom = event.title.components(separatedBy: " #")
                     let title = titleAndChatRoom.first ?? event.title
                     return (time: event.airingDate.timeString, title: title)
                 })
-            })
+            }
+
+            if let firstEvent = scheduled.first?.first {
+                let endingDate = firstEvent.airingDate.addingTimeInterval(firstEvent.duration)
+                let timer = Timer(fire: endingDate, interval: 0, repeats: false, block: self.updateSchedule)
+                RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
+                self.scheduleTimer = timer
+            }
         }
     }
 
     func handleTapGesture(_ gesture: UITapGestureRecognizer) {
         delegate?.dismissChannelGuide(completion: nil)
+    }
+
+    deinit {
+        scheduleTimer?.invalidate()
     }
 
 }

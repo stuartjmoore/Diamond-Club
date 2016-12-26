@@ -15,7 +15,7 @@ class ChatRealmViewController: UIViewController {
 
     @IBOutlet fileprivate var tableView: UITableView!
 
-    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "test", nick: "AppleTV\(arc4random_uniform(10_000))")
+    private let chatRealm = IRCClient(host: "irc.chatrealm.net", port: 6667, room: "chat", nick: "AppleTV\(arc4random_uniform(10_000))")
     fileprivate var data: [(username: String, message: String)] = []
 
     // MARK: -
@@ -27,7 +27,7 @@ class ChatRealmViewController: UIViewController {
         tableView.mask = nil
 
         chatRealm.delegate = self
-        //chatRealm.start()
+        chatRealm.start()
     }
 
     // MARK: - KVO

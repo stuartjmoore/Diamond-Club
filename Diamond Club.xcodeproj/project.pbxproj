@@ -47,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1704F01D1E11C0080027B4C5 /* Diamond Club.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Diamond Club.entitlements"; sourceTree = "<group>"; };
 		172E2ACE1E034DE6001497DA /* ChannelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCell.swift; sourceTree = "<group>"; };
 		173517121E04D689005219E0 /* NSNumber+UIPressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+UIPressType.swift"; sourceTree = "<group>"; };
 		173517141E04DE80005219E0 /* ChannelGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelGuideViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 				17B883181E08A7C500E22F26 /* Extensions */,
 				17D94DCF1DFC9EE300509487 /* Info.plist */,
 				173517201E05DC0B005219E0 /* Keys.plist */,
+				1704F01D1E11C0080027B4C5 /* Diamond Club.entitlements */,
 			);
 			path = "Diamond Club";
 			sourceTree = "<group>";
@@ -218,6 +220,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 968599HPC6;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -430,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Diamond Club/Diamond Club.entitlements";
 				DEVELOPMENT_TEAM = 968599HPC6;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Diamond Club/Info.plist";
@@ -446,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Diamond Club/Diamond Club.entitlements";
 				DEVELOPMENT_TEAM = 968599HPC6;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Diamond Club/Info.plist";

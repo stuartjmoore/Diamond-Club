@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1704F01F1E11D41D0027B4C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1704F01E1E11D41D0027B4C5 /* Channel.swift */; };
+		1704F0231E130D170027B4C5 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1704F0221E130D170027B4C5 /* ImageCache.swift */; };
+		1704F0251E130F840027B4C5 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1704F0241E130F840027B4C5 /* UIImage+URL.swift */; };
 		17B8830C1E08A68300E22F26 /* DiamondClubKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B8830A1E08A68300E22F26 /* DiamondClubKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17B883151E08A6CB00E22F26 /* DiamondClub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B883141E08A6CB00E22F26 /* DiamondClub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1704F01E1E11D41D0027B4C5 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		1704F0221E130D170027B4C5 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		1704F0241E130F840027B4C5 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
 		17B883071E08A68300E22F26 /* DiamondClubKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiamondClubKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B8830A1E08A68300E22F26 /* DiamondClubKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiamondClubKit.h; sourceTree = "<group>"; };
 		17B8830B1E08A68300E22F26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 			children = (
 				17B883141E08A6CB00E22F26 /* DiamondClub.swift */,
 				1704F01E1E11D41D0027B4C5 /* Channel.swift */,
+				1704F0221E130D170027B4C5 /* ImageCache.swift */,
+				1704F0241E130F840027B4C5 /* UIImage+URL.swift */,
 				17B8830A1E08A68300E22F26 /* DiamondClubKit.h */,
 				17B8830B1E08A68300E22F26 /* Info.plist */,
 			);
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1704F0231E130D170027B4C5 /* ImageCache.swift in Sources */,
 				17B883151E08A6CB00E22F26 /* DiamondClub.swift in Sources */,
 				1704F01F1E11D41D0027B4C5 /* Channel.swift in Sources */,
+				1704F0251E130F840027B4C5 /* UIImage+URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

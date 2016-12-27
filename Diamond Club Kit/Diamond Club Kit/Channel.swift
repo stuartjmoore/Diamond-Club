@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 public struct Channel {
 
@@ -64,20 +65,7 @@ extension Channel {
             return completion(#imageLiteral(resourceName: "twentyFourSeven"))
         }
 
-        let session = URLSession(configuration: .ephemeral)
-        var request = URLRequest(url: imageURL ?? DiamondClub.iconURL(for: number))
-        request.setValue(userAgentValue, forHTTPHeaderField: "User-Agent")
-
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return print("No data") }
-            guard let image = UIImage(data: data) else { return print("No image") }
-
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        }
-
-        task.resume()
+        UIImage.from(URL: imageURL ?? DiamondClub.iconURL(for: number), completion: completion)
     }
 
 }

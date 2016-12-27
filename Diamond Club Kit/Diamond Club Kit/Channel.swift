@@ -17,6 +17,10 @@ public struct Channel {
     public let description: String?
     public let currentGame: String?
 
+    public var streamURL: URL {
+        return DiamondClub.streamURL(for: number)
+    }
+
     public init?(JSON: [String: Any]) {
         guard let id = JSON["streamid"] as? Int else { return nil }
         guard let number = JSON["channel"] as? Int else { return nil }

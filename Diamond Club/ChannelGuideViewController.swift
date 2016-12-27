@@ -98,8 +98,7 @@ class ChannelGuideViewController: UIViewController {
     fileprivate func change(channel: Channel) {
         currentNumber = channel.number
 
-        let url = DiamondClub.streamURL(for: channel.number)
-        delegate?.updatePlayerItem(playing: url)
+        delegate?.updatePlayerItem(playing: channel.streamURL)
         delegate?.updateMetadata(title: channel.title, description: channel.description, image: channel.image)
     }
 

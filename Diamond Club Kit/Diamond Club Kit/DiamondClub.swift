@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 internal let hostPath = "http://diamondclub.tv"
 internal let apiPath = "api"

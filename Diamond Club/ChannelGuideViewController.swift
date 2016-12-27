@@ -12,19 +12,14 @@ import ScheduleKit
 
 protocol ChannelGuideViewControllerDelegate: class {
     func updatePlayerItem(playing: URL)
+    func updateMetadata(title: String, description: String?)
+    func updateMetadata(image: UIImage)
     func dismissChannelGuide(completion: (() -> Void)?)
 }
 
 class ChannelGuideViewController: UIViewController {
 
-    weak var delegate: ChannelGuideViewControllerDelegate? {
-        didSet {
-            if let number = currentNumber {
-                let url = DiamondClub.streamURL(for: number)
-                delegate?.updatePlayerItem(playing: url)
-            }
-        }
-    }
+    weak var delegate: ChannelGuideViewControllerDelegate?
 
     @IBOutlet fileprivate(set) var collectionView: UICollectionView!
     @IBOutlet fileprivate(set) var tableView: UITableView!
@@ -60,13 +55,12 @@ class ChannelGuideViewController: UIViewController {
     }
 
     func updateChannels() {
-        DiamondClub.getLiveChannels { (channels) in
-            self.channels = channels
+        DiamondClub.getLiveChannels { [weak self] (channels) in
+            self?.channels = channels
 
-            if self.currentNumber == nil, let channelIndex = (channels.count > 0 ? 0 : nil) {
-                let url = DiamondClub.streamURL(for: channels[channelIndex].number)
-                self.currentNumber = channels[channelIndex].number
-                self.delegate?.updatePlayerItem(playing: url)
+            if self?.currentNumber == nil, let channelIndex = (channels.count > 0 ? 0 : nil) {
+                let channel = channels[channelIndex]
+                self?.change(channel: channel)
             }
         }
     }
@@ -100,6 +94,18 @@ class ChannelGuideViewController: UIViewController {
 
     func handleTapGesture(_ gesture: UITapGestureRecognizer) {
         delegate?.dismissChannelGuide(completion: nil)
+    }
+
+    fileprivate func change(channel: Channel) {
+        currentNumber = channel.number
+
+        let url = DiamondClub.streamURL(for: channel.number)
+        delegate?.updatePlayerItem(playing: url)
+        delegate?.updateMetadata(title: channel.title, description: channel.description)
+
+        DiamondClub.getChannelIcon(for: channel.number) { [weak self] (image) in
+            self?.delegate?.updateMetadata(image: image)
+        }
     }
 
     deinit {
@@ -147,12 +153,10 @@ extension ChannelGuideViewController: UICollectionViewDelegate {
             return
         }
 
-        let item = channels[indexPath.row]
-        let url = DiamondClub.streamURL(for: item.number)
-        currentNumber = item.number
+        let channel = channels[indexPath.row]
 
-        delegate?.dismissChannelGuide() {
-            self.delegate?.updatePlayerItem(playing: url)
+        delegate?.dismissChannelGuide() { [weak self] in
+            self?.change(channel: channel)
         }
     }
 

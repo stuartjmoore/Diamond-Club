@@ -224,6 +224,33 @@ extension PlayerViewController: ChannelGuideViewControllerDelegate {
         self.playerItem = playerItem
     }
 
+    func updateMetadata(title: String, description: String?) {
+        let metadataTitle = AVMutableMetadataItem()
+        metadataTitle.key = AVMetadataCommonKeyTitle as (NSCopying & NSObjectProtocol)?
+        metadataTitle.keySpace = AVMetadataKeySpaceCommon
+        metadataTitle.value = title as (NSCopying & NSObjectProtocol)?
+        metadataTitle.locale = .current
+        playerItem?.externalMetadata = [metadataTitle]
+
+        if let description = description {
+            let metadataDescription = AVMutableMetadataItem()
+            metadataDescription.key = AVMetadataCommonKeyDescription as (NSCopying & NSObjectProtocol)?
+            metadataDescription.keySpace = AVMetadataKeySpaceCommon
+            metadataDescription.value = description as (NSCopying & NSObjectProtocol)?
+            metadataDescription.locale = .current
+            playerItem?.externalMetadata.append(metadataDescription)
+        }
+    }
+
+    func updateMetadata(image: UIImage) {
+        let metadataArtwork = AVMutableMetadataItem()
+        metadataArtwork.key = AVMetadataCommonKeyArtwork as (NSCopying & NSObjectProtocol)?
+        metadataArtwork.keySpace = AVMetadataKeySpaceCommon
+        metadataArtwork.value = UIImagePNGRepresentation(image) as (NSCopying & NSObjectProtocol)?
+        metadataArtwork.locale = .current
+        playerItem?.externalMetadata.append(metadataArtwork)
+    }
+
     func dismissChannelGuide(completion: (() -> Void)?) {
         toggleChannelGuide(display: false, completion: completion)
     }

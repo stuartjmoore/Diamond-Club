@@ -12,8 +12,7 @@ import ScheduleKit
 
 protocol ChannelGuideViewControllerDelegate: class {
     func updatePlayerItem(playing: URL)
-    func updateMetadata(title: String, description: String?)
-    func updateMetadata(image: UIImage)
+    func updateMetadata(title: String, description: String?, image: (@escaping (UIImage) -> Void) -> Void)
     func dismissChannelGuide(completion: (() -> Void)?)
 }
 
@@ -101,11 +100,7 @@ class ChannelGuideViewController: UIViewController {
 
         let url = DiamondClub.streamURL(for: channel.number)
         delegate?.updatePlayerItem(playing: url)
-        delegate?.updateMetadata(title: channel.title, description: channel.description)
-
-        DiamondClub.getChannelIcon(for: channel.number) { [weak self] (image) in
-            self?.delegate?.updateMetadata(image: image)
-        }
+        delegate?.updateMetadata(title: channel.title, description: channel.description, image: channel.image)
     }
 
     deinit {
@@ -133,8 +128,8 @@ extension ChannelGuideViewController: UICollectionViewDataSource {
         cell.titleLabel.text = item.title
         cell.iconImageView.image = nil
 
-        DiamondClub.getChannelIcon(for: item.number) { (image) in
-            cell.iconImageView.image = image
+        item.image { [weak cell] (image) in
+            cell?.iconImageView.image = image
         }
         
         return cell

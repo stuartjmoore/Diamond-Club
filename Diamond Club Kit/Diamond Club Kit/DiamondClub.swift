@@ -9,9 +9,9 @@
 import Foundation
 import UIKit.UIImage
 
-private let hostPath = "http://diamondclub.tv"
-private let apiPath = "api"
-private let userAgentValue = "diamondclub/appletv"
+internal let hostPath = "http://diamondclub.tv"
+internal let apiPath = "api"
+internal let userAgentValue = "diamondclub/appletv"
 
 private let allChannelsURL = URL(string: "\(hostPath)/\(apiPath)/statusv2.php")!
 private let liveChannelsURL = URL(string: "\(hostPath)/\(apiPath)/channelsv2.php")!
@@ -49,27 +49,6 @@ public struct DiamondClub {
             }
         }
 
-        task.resume()
-    }
-
-    public static func getChannelIcon(for channel: Int, completion: @escaping (UIImage) -> Void) {
-        guard channel > 0 else {
-            return completion(#imageLiteral(resourceName: "twentyFourSeven"))
-        }
-
-        let session = URLSession(configuration: .ephemeral)
-        var request = URLRequest(url: DiamondClub.iconURL(for: channel))
-        request.setValue(userAgentValue, forHTTPHeaderField: "User-Agent")
-
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return print("No data") }
-            guard let image = UIImage(data: data) else { return print("No image") }
-
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        }
-        
         task.resume()
     }
     

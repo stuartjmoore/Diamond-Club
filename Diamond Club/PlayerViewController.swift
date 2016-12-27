@@ -224,7 +224,7 @@ extension PlayerViewController: ChannelGuideViewControllerDelegate {
         self.playerItem = playerItem
     }
 
-    func updateMetadata(title: String, description: String?) {
+    func updateMetadata(title: String, description: String?, image: (@escaping (UIImage) -> Void) -> Void) {
         let metadataTitle = AVMutableMetadataItem()
         metadataTitle.key = AVMetadataCommonKeyTitle as (NSCopying & NSObjectProtocol)?
         metadataTitle.keySpace = AVMetadataKeySpaceCommon
@@ -240,15 +240,15 @@ extension PlayerViewController: ChannelGuideViewControllerDelegate {
             metadataDescription.locale = .current
             playerItem?.externalMetadata.append(metadataDescription)
         }
-    }
 
-    func updateMetadata(image: UIImage) {
-        let metadataArtwork = AVMutableMetadataItem()
-        metadataArtwork.key = AVMetadataCommonKeyArtwork as (NSCopying & NSObjectProtocol)?
-        metadataArtwork.keySpace = AVMetadataKeySpaceCommon
-        metadataArtwork.value = UIImagePNGRepresentation(image) as (NSCopying & NSObjectProtocol)?
-        metadataArtwork.locale = .current
-        playerItem?.externalMetadata.append(metadataArtwork)
+        image { [weak playerItem] (image) in
+            let metadataArtwork = AVMutableMetadataItem()
+            metadataArtwork.key = AVMetadataCommonKeyArtwork as (NSCopying & NSObjectProtocol)?
+            metadataArtwork.keySpace = AVMetadataKeySpaceCommon
+            metadataArtwork.value = UIImagePNGRepresentation(image) as (NSCopying & NSObjectProtocol)?
+            metadataArtwork.locale = .current
+            playerItem?.externalMetadata.append(metadataArtwork)
+        }
     }
 
     func dismissChannelGuide(completion: (() -> Void)?) {

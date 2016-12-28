@@ -1,5 +1,7 @@
 # Diamond Club for Apple TV
 
+![Screenshot](screenshot.jpg)
+
 Welcome.
 
 ## Google Calendar Keys
